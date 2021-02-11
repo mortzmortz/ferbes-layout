@@ -1,9 +1,5 @@
 <div align="center" >
-  <img src="logo.svg" alt="3pc" width="190px" />
-  <br/>
-  <br/>
-  Ferbes Layout
-  <br/>
+  <h3>Ferbes Layout</h3>
 </div>
 
 ---
