@@ -123,18 +123,3 @@ Start a local Storybook server:
 ```bash
 $ yarn start
 ```
-
-## Releases
-
-This is our current release process.
-
-```bash
-# This will update the `CHANGELOG`, bumping the version and git tags locally:
-$ yarn release
-
-# Push to Gitlab along with the new tag:
-$ git push origin master --follow-tags
-
-# Publish the new version to `nexus`:
-$ yarn publish
-```
