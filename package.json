@@ -3,7 +3,6 @@
   "version": "0.0.3",
   "description": "Layout Components for React Applications",
   "author": "Gerion Herbst<gerion@gmx.com>",
-  "homepage": "",
   "repository": "git@github.com:mortzmortz/ferbes-layout.git",
   "keywords": [
     "react",
@@ -12,7 +11,7 @@
     "emotion",
     "storybook"
   ],
-  "license": "UNLICENSED",
+  "license": "MIT",
   "sideEffects": false,
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
