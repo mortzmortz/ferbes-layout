@@ -1,0 +1,143 @@
+import { Story, Canvas, ArgsTable, Meta } from '@storybook/addon-docs/blocks';
+import { Box, Inline, Placeholder } from '../components';
+
+<Meta title="Components/Inline" component={Inline} />
+
+# Inline
+
+<Canvas withSource="open">
+  <Story name="Base">
+    <Box width={240}>
+      <Inline>
+        <Placeholder width={60} height={60} />
+        <Placeholder width={60} height={60} />
+        <Placeholder width={60} height={60} />
+        <Placeholder width={60} height={60} />
+        <Placeholder width={60} height={60} />
+        <Placeholder width={60} height={60} />
+        <Placeholder width={60} height={60} />
+        <Placeholder width={60} height={60} />
+      </Inline>
+    </Box>
+  </Story>
+</Canvas>
+
+### Space
+
+<Canvas>
+  <Story name="Space">
+    <Box width={240}>
+      <Inline space={2}>
+        <Placeholder width={60} height={60} />
+        <Placeholder width={60} height={60} />
+        <Placeholder width={60} height={60} />
+        <Placeholder width={60} height={60} />
+        <Placeholder width={60} height={60} />
+        <Placeholder width={60} height={60} />
+        <Placeholder width={60} height={60} />
+        <Placeholder width={60} height={60} />
+      </Inline>
+    </Box>
+  </Story>
+</Canvas>
+
+### Align to left
+
+<Canvas>
+  <Story name="Align to left">
+    <Box width={240}>
+      <Inline space={2} align="left">
+        <Placeholder width={60} height={60} />
+        <Placeholder width={60} height={60} />
+        <Placeholder width={60} height={60} />
+        <Placeholder width={60} height={60} />
+        <Placeholder width={60} height={60} />
+        <Placeholder width={60} height={60} />
+        <Placeholder width={60} height={60} />
+        <Placeholder width={60} height={60} />
+      </Inline>
+    </Box>
+  </Story>
+</Canvas>
+
+### Align to center
+
+<Canvas>
+  <Story name="Align to center">
+    <Box width={240}>
+      <Inline space={2} align="center">
+        <Placeholder width={60} height={60} />
+        <Placeholder width={60} height={60} />
+        <Placeholder width={60} height={60} />
+        <Placeholder width={60} height={60} />
+        <Placeholder width={60} height={60} />
+        <Placeholder width={60} height={60} />
+        <Placeholder width={60} height={60} />
+        <Placeholder width={60} height={60} />
+      </Inline>
+    </Box>
+  </Story>
+</Canvas>
+
+### Align to right
+
+<Canvas>
+  <Story name="Align to right">
+    <Box width={240}>
+      <Inline space={2} align="right">
+        <Placeholder width={60} height={60} />
+        <Placeholder width={60} height={60} />
+        <Placeholder width={60} height={60} />
+        <Placeholder width={60} height={60} />
+        <Placeholder width={60} height={60} />
+        <Placeholder width={60} height={60} />
+        <Placeholder width={60} height={60} />
+        <Placeholder width={60} height={60} />
+      </Inline>
+    </Box>
+  </Story>
+</Canvas>
+
+### Collapse below
+
+The `collapseBelow` prop allows to stack children below a certain breakpoint.<br />
+The number you pass to `collapseBelow` corresponds to the index of the `breakpoints`
+array of your theme.
+
+<Canvas>
+  <Story name="Collapse below">
+    <Inline collapseBelow={1} space={2}>
+      <Placeholder width={60} height={60} />
+      <Placeholder width={60} height={60} />
+      <Placeholder width={60} height={60} />
+    </Inline>
+  </Story>
+</Canvas>
+
+### Collaps below with align center
+
+<Canvas>
+  <Story name="Collapse below with align center">
+    <Inline collapseBelow={1} space={2} align="center">
+      <Placeholder width={60} height={60} />
+      <Placeholder width={60} height={60} />
+      <Placeholder width={60} height={60} />
+    </Inline>
+  </Story>
+</Canvas>
+
+### Collaps below with responsive alignment
+
+<Canvas>
+  <Story name="Collapse below with responsive align">
+    <Inline collapseBelow={1} space={2} align={['left', 'left', 'right']}>
+      <Placeholder width={60} height={60} />
+      <Placeholder width={60} height={60} />
+      <Placeholder width={60} height={60} />
+    </Inline>
+  </Story>
+</Canvas>
+
+## Props
+
+<ArgsTable of={Inline} />

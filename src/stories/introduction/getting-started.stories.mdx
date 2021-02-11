@@ -1,0 +1,38 @@
+import { Meta, Canvas, Story } from '@storybook/addon-docs/blocks';
+import { Box, Flex } from '../../components';
+import pkgJson from '../../../package.json';
+
+<Meta title="Introduction/Getting Started" />
+
+<Flex justifyContent="center">
+  <h1>Ferbes Layout</h1>
+</Flex>
+<Flex justifyContent="center" mt="20px">
+  <p>v{pkgJson.version}</p>
+</Flex>
+
+<Box mt="60px">
+
+# Getting Started
+
+The instructions below cover how to use `Ferbes Layout` within a React application.
+
+### Prerequisites
+
+- You should have **[Node.js](https://nodejs.org/) v10.17.0+** installed
+- To add this package to your project you need either **[npm](https://www.npmjs.com/)** or **[yarn](https://yarnpkg.com/)**.<br />
+  `npm` comes with node. You can read how to install `yarn` in [their documentation](https://yarnpkg.com/en/docs/install).
+
+### Adding `Ferbes Layout` to an existing app
+
+```bash
+npm i ferbes-layout @emotion/react @emotion/styled
+# Or if you prefer yarn:
+yarn add ferbes-layout @emotion/react @emotion/styled
+```
+
+### Configuring the theme
+
+Refer to the [FerbesProvider documentation](/?path=/docs/logic-ferbesprovider--page) to learn more about configuring `Ferbes Layout`.
+
+</Box>

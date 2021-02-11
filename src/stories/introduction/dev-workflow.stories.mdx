@@ -1,0 +1,78 @@
+import { Meta, Canvas, Story } from '@storybook/addon-docs/blocks';
+import { Box, Stack, Placeholder } from '../../components';
+
+<Meta title="Introduction/Development Workflow" />
+
+# Development Workflow
+
+### Working with components
+
+`Ferbes Layout` provides consumers with a suite of low-level layout components that
+are powered by an underlying themed styling system.
+
+<Canvas withSource="open">
+  <Story name="Box Component">
+    <>
+      <Box>
+        <Placeholder height={60} width={120} />
+      </Box>
+      <Box>
+        <Placeholder height={60} width={120} />
+      </Box>
+      <Box>
+        <Placeholder height={60} width={120} />
+      </Box>
+    </>
+  </Story>
+</Canvas>
+
+You’ll notice that each of these components don’t provide any surrounding
+white space.
+
+### Layout components
+
+In order to distribute white space evenly between components, wrap sibling
+elements in a [Stack](/?path=/docs/layout-stack--base) component with a custom
+`space` property:
+
+<Canvas withSource="open">
+  <Story name="Layout Components">
+    <Stack space="4">
+      <Placeholder height={60} width={120} />
+      <Placeholder height={60} width={120} />
+      <Placeholder height={60} width={120} />
+    </Stack>
+  </Story>
+</Canvas>
+
+The `space` property is a responsive prop, which means that it can also accept
+an array of values representing each breakpoint. For example, if you wanted a
+smaller space below the first breakpoint and a larger space on larger screens:
+
+<Canvas withSource="open">
+  <Story name="Responsive Props">
+    <Stack space={[3, 8]}>
+      <Placeholder height={60} width={120} />
+      <Placeholder height={60} width={120} />
+      <Placeholder height={60} width={120} />
+    </Stack>
+  </Story>
+</Canvas>
+
+### Need responsive styles?
+
+Previously, one of the main reasons for needing to create custom CSS was to
+define responsive rules. The [Box](/?path=/docs/layout-box--base) component
+makes this possible via responsive properties, which are provided as an array
+of values—one per defined breakpoint.
+
+For example, if we wanted to change the value for `display` responsively:
+
+<Canvas withSource="open">
+  <Story name="Responsive Display Prop">
+    <Box display={['flex', 'block']}>
+      <h4>Flex on small screen</h4>
+      <h4>Block on large screen</h4>
+    </Box>
+  </Story>
+</Canvas>

@@ -1,0 +1,23 @@
+import { Story, Canvas, ArgsTable, Meta } from '@storybook/addon-docs/blocks';
+import { Flex, Box, Placeholder } from '../components';
+
+<Meta title="Components/Flex" component={Flex} />
+
+# Flex
+
+<Canvas withSource="open">
+  <Story name="Base">
+    <Flex>
+      <Box flex="0 0 50%">
+        <Placeholder />
+      </Box>
+      <Box flex="0 0 100px">
+        <Placeholder />
+      </Box>
+    </Flex>
+  </Story>
+</Canvas>
+
+## Props
+
+<ArgsTable of={Flex} />

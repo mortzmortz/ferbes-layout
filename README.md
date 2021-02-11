@@ -1,0 +1,144 @@
+<div align="center" >
+  <img src="logo.svg" alt="3pc" width="190px" />
+  <br/>
+  <br/>
+  Ferbes Layout
+  <br/>
+</div>
+
+---
+
+`Ferbes Layout` is based on [Emotion](https://emotion.sh) and [Styled System](https://styled-system.com).
+
+## Setup
+
+```bash
+$ npm i ferbes-layout @emotion/react @emotion/styled
+# or
+$ yarn add ferbes-layout @emotion/react @emotion/styled
+```
+
+## Documentation
+
+### Setting a theme
+
+`Ferbes Layout` comes with a pre-configured theme. Although in most cases
+you want to provide your own theme:
+
+At the root of your application, wrap the components in the `FerbesProvider`.
+
+```jsx
+import { FerbesProvider } from 'ferbes-layout';
+
+const theme = {
+  breakpoints: ['450px', '900px', '1200px'],
+  space: [2, 4, 6, 8, 12, 16, 24, 32],
+};
+
+const App = () => <FerbesProvider theme={theme}>...</FerbesProvider>;
+```
+
+> Your custom theme will be merged with the default theme.
+
+### Adding global styles
+
+```jsx
+import { css } from '@emotion/react';
+import { FerbesProvider } from 'ferbes-layout';
+
+const styles = css`
+  body {
+    background: black;
+  }
+`;
+
+const App = () => <FerbesProvider styles={styles}>...</FerbesProvider>;
+```
+
+### Style with style props
+
+`Ferbes Layout` allows you to control styles based on a global theme.
+Some components have style props made available by [Styled System](https://styled-system.com/table):
+
+```javascript
+<Box color="#fff" bg="tomato">
+  Tomato
+</Box>
+```
+
+So far, this component can be styled with any valid CSS color. To create a more consistent UI, use the style tokens provided by your theme.
+
+You can extend your theme like this:
+
+```javascript
+const theme = {
+  colors: {
+    primary: ['#5b53ff', '#2745fa', '#5378fc', '#93b4fb', '#e6effe'],
+    white: '#ffffff',
+    ...
+  }
+  ...
+}
+```
+
+Then you can use it like this:
+
+```javascript
+<Box color="white" backgroundColor="primary.1">
+  Blue Box
+</Box>
+```
+
+### Hide Focus Rings
+
+`Ferbes Layout` comes with support for hiding focus rings, when using the
+app with your mouse. You can enable this feature by providing a `hideFocusRings`
+prop:
+
+```jsx
+import { FerbesProvider } from 'ferbes-layout';
+
+const App = () => <FerbesProvider hideFocusRings={true}>...</FerbesProvider>;
+```
+
+#### useTheme
+
+If you need direct access to the theme tokens, you can use the `useTheme` hook.
+
+```javascript
+import { useTheme } from 'ferbes-layout';
+
+const MyComponent = () => {
+  const theme = useTheme()
+  return ...
+}
+```
+
+> Nevertheless, it is recommended to only use the provided theme tokens.
+
+## Local Development
+
+```bash
+$ yarn
+```
+
+Start a local Storybook server:
+
+```bash
+$ yarn start
+```
+
+## Releases
+
+This is our current release process.
+
+```bash
+# This will update the `CHANGELOG`, bumping the version and git tags locally:
+$ yarn release
+
+# Push to Gitlab along with the new tag:
+$ git push origin master --follow-tags
+
+# Publish the new version to `nexus`:
+$ yarn publish
+```

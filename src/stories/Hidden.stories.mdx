@@ -1,0 +1,37 @@
+import { Story, Canvas, ArgsTable, Meta } from '@storybook/addon-docs/blocks';
+import { Hidden } from '../components';
+
+<Meta title="Components/Hidden" component={Hidden} />
+
+# Hidden
+
+Allows you to hide content responsively.<br />
+The number you pass to `above` and `below` corresponds to the index of the breakpoints array of your theme.
+
+<Canvas>
+  <Story name="Below">
+    <Hidden below={1}>
+      <p>{`Hidden below 768`}</p>
+    </Hidden>
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="Above">
+    <Hidden above={3}>
+      <p>{`Hidden above 1440`}</p>
+    </Hidden>
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="Below and Above">
+    <Hidden below={1} above={3}>
+      <p>{`Hidden below 768 and above 1440`}</p>
+    </Hidden>
+  </Story>
+</Canvas>
+
+## Props
+
+<ArgsTable of={Hidden} />

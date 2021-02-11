@@ -1,0 +1,28 @@
+import { Story, Canvas, ArgsTable, Meta } from '@storybook/addon-docs/blocks';
+import { Box, Placeholder } from '../components';
+
+<Meta title="Components/Box" component={Box} />
+
+# Box
+
+<Canvas withSource="open">
+  <Story name="Base">
+    <Box>
+      <Placeholder height={100} />
+    </Box>
+  </Story>
+</Canvas>
+
+### Padding
+
+<Canvas>
+  <Story name="Padding">
+    <Box p={4} bg="lightgoldenrodyellow">
+      <Placeholder height={100} />
+    </Box>
+  </Story>
+</Canvas>
+
+## Props
+
+<ArgsTable of={Box} />

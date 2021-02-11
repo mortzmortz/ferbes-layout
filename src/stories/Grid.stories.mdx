@@ -1,0 +1,26 @@
+import { Story, Canvas, ArgsTable, Meta } from '@storybook/addon-docs/blocks';
+import { Grid, Box, Placeholder } from '../components';
+
+<Meta title="Components/Grid" component={Grid} />
+
+# Grid
+
+<Canvas withSource="open">
+  <Story name="Base">
+    <Grid gridTemplateColumns="100px 1fr 300px" gridGap={3}>
+      <Box>
+        <Placeholder />
+      </Box>
+      <Box>
+        <Placeholder />
+      </Box>
+      <Box>
+        <Placeholder />
+      </Box>
+    </Grid>
+  </Story>
+</Canvas>
+
+## Props
+
+<ArgsTable of={Grid} />
