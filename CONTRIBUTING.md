@@ -1,4 +1,4 @@
-# Contributing to `Layout Components`
+# Contributing
 
 The commit message should be structured as follows:
 

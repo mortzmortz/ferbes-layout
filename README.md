@@ -110,8 +110,6 @@ const MyComponent = () => {
 }
 ```
 
-> Nevertheless, it is recommended to only use the provided theme tokens.
-
 ## Local Development
 
 ```bash
