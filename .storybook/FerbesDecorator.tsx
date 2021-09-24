@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { css } from '@emotion/react';
 import { FerbesProvider } from '../src/components';
 import { defaultTheme } from '../src/defaultTheme';

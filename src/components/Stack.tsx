@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { Box } from './Box';
 import { alignToFlex, Align } from '../utils/align';
 import { SpaceProps } from 'styled-system';

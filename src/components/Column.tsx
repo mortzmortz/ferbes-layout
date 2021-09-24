@@ -1,9 +1,14 @@
-import React from 'react';
+import * as React from 'react';
 import styled from '@emotion/styled';
-import { Box, BoxProps } from './Box';
+import { Box } from './Box';
 import { ColumnContext } from './Columns';
 
-const Column = React.forwardRef<HTMLDivElement, BoxProps>(
+export type ColumnProps = {
+  children?: React.ReactNode;
+  width?: 'content' | number;
+};
+
+const Column = React.forwardRef<HTMLDivElement, ColumnProps>(
   ({ width, children }, ref) => {
     const { paddingLeft, paddingTop } = React.useContext(ColumnContext);
 

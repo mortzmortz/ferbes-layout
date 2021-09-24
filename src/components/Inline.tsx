@@ -1,18 +1,20 @@
-import React from 'react';
+import * as React from 'react';
 import { get, SpaceProps } from 'styled-system';
 import styled from '@emotion/styled';
 import { useTheme } from './FerbesProvider';
 import { Box } from './Box';
 import { Flex } from './Flex';
-import { alignToFlex } from '../utils/align';
+import { alignToFlex, alignYToFlex } from '../utils/align';
 import { resolveResponsiveProps } from '../utils/resolveResponsiveProps';
 
+// TODO: split alignItems and justifyContent or handle with display inline-flex ?
 const Inline = React.forwardRef<HTMLDivElement, InlineProps>(
-  ({ space = null, align, collapseBelow, children }, ref) => {
+  ({ space = null, align, alignY, collapseBelow, children }, ref) => {
     const theme = useTheme();
     const negativeSpace = !space ? 0 : -Number(space);
     const marginTop = get(theme.space, Number(space));
     const alignFlex = align ? alignToFlex(align) : null;
+    const alignYFlex = alignY ? alignYToFlex(alignY) : null;
     const flexDirection = resolveResponsiveProps(
       { below: collapseBelow, breakpoints: theme.breakpoints },
       ['column', 'row']
@@ -24,7 +26,7 @@ const Inline = React.forwardRef<HTMLDivElement, InlineProps>(
           justifyContent={alignFlex}
           flexWrap="wrap"
           marginLeft={negativeSpace}
-          alignItems={alignFlex}
+          alignItems={alignYFlex}
           flexDirection={flexDirection}
           ref={ref}
         >
@@ -42,9 +44,10 @@ const Inline = React.forwardRef<HTMLDivElement, InlineProps>(
 );
 
 export type InlineProps = {
-  align?: 'left' | 'center' | 'right' | string[];
-  collapseBelow?: number;
   children?: React.ReactNode;
+  align?: 'left' | 'center' | 'right' | string[];
+  alignY?: 'top' | 'center' | 'bottom' | string[];
+  collapseBelow?: number;
   space?: SpaceProps['padding'];
 };
 

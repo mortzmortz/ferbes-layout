@@ -1,4 +1,4 @@
-import { AllHTMLAttributes, ReactNode } from 'react';
+import * as React from 'react';
 import styled from '@emotion/styled';
 import shouldForwardProp from '@styled-system/should-forward-prop';
 import {
@@ -20,11 +20,11 @@ import {
   ShadowProps,
   BackgroundProps,
   TypographyProps,
-  FlexProps,
+  FlexProps as StyledSystemFlexProps,
   FlexboxProps,
 } from 'styled-system';
 
-const Flex = styled('div', { shouldForwardProp })<Props>(
+const Flex = styled('div', { shouldForwardProp })<FlexProps>(
   () => ({
     display: 'flex',
     minWidth: 0,
@@ -44,19 +44,19 @@ const Flex = styled('div', { shouldForwardProp })<Props>(
   typography
 );
 
-export type Props = PositionProps &
+export type FlexProps = PositionProps &
   LayoutProps &
   FlexboxProps &
-  FlexProps &
+  StyledSystemFlexProps &
   SpaceProps &
   ColorProps &
   BorderProps &
   ShadowProps &
   BackgroundProps &
   TypographyProps &
-  AllHTMLAttributes<HTMLElement> & {
+  React.AllHTMLAttributes<HTMLElement> & {
     as?: As;
-    children?: ReactNode;
+    children?: React.ReactNode;
   };
 
 type As<P = any> = React.ElementType<P>;

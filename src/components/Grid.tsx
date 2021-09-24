@@ -1,4 +1,4 @@
-import { AllHTMLAttributes, ReactNode } from 'react';
+import * as React from 'react';
 import styled from '@emotion/styled';
 import shouldForwardProp from '@styled-system/should-forward-prop';
 import {
@@ -21,12 +21,12 @@ import {
   ShadowProps,
   BackgroundProps,
   TypographyProps,
-  GridProps,
+  GridProps as StyledSystemGridProps,
   FlexProps,
   FlexboxProps,
 } from 'styled-system';
 
-const Grid = styled('div', { shouldForwardProp })(
+const Grid = styled('div', { shouldForwardProp })<GridProps>(
   () => ({
     display: 'grid',
     margin: 0,
@@ -46,9 +46,9 @@ const Grid = styled('div', { shouldForwardProp })(
   typography
 );
 
-export type Props = PositionProps &
+export type GridProps = PositionProps &
   LayoutProps &
-  GridProps &
+  StyledSystemGridProps &
   FlexProps &
   FlexboxProps &
   SpaceProps &
@@ -57,9 +57,9 @@ export type Props = PositionProps &
   ShadowProps &
   BackgroundProps &
   TypographyProps &
-  AllHTMLAttributes<HTMLElement> & {
+  React.AllHTMLAttributes<HTMLElement> & {
     as?: As;
-    children?: ReactNode;
+    children?: React.ReactNode;
   };
 
 type As<P = any> = React.ElementType<P>;

@@ -1,5 +1,5 @@
-import { Story, Canvas, ArgsTable, Meta } from '@storybook/addon-docs/blocks';
-import { Box, Inline, Placeholder } from '../components';
+import { Story, Canvas, ArgsTable, Meta } from '@storybook/addon-docs';
+import { Box, Inline, Placeholder, Stack } from '../components';
 
 <Meta title="Components/Inline" component={Inline} />
 
@@ -41,60 +41,51 @@ import { Box, Inline, Placeholder } from '../components';
   </Story>
 </Canvas>
 
-### Align to left
+### Vertical alignment
 
 <Canvas>
-  <Story name="Align to left">
-    <Box width={240}>
-      <Inline space={2} align="left">
-        <Placeholder width={60} height={60} />
-        <Placeholder width={60} height={60} />
-        <Placeholder width={60} height={60} />
-        <Placeholder width={60} height={60} />
-        <Placeholder width={60} height={60} />
-        <Placeholder width={60} height={60} />
-        <Placeholder width={60} height={60} />
-        <Placeholder width={60} height={60} />
+  <Story name="Vertical alignment">
+    <Stack space="6" align="center">
+      <Inline space={2} alignY="top">
+        <Placeholder width={60} height={20} />
+        <Placeholder width={60} height={60} label="top" />
+        <Placeholder width={60} height={20} />
       </Inline>
-    </Box>
+      <Inline space={2} alignY="center">
+        <Placeholder width={60} height={20} />
+        <Placeholder width={60} height={60} label="center" />
+        <Placeholder width={60} height={20} />
+      </Inline>
+      <Inline space={2} alignY="bottom">
+        <Placeholder width={60} height={20} />
+        <Placeholder width={60} height={60} label="bottom" />
+        <Placeholder width={60} height={20} />
+      </Inline>
+    </Stack>
   </Story>
 </Canvas>
 
-### Align to center
+### Horizontal alignment
 
 <Canvas>
-  <Story name="Align to center">
-    <Box width={240}>
+  <Story name="Horizontal alignment">
+    <Stack space="6">
+      <Inline space={2} align="left">
+        <Placeholder width={60} height={60} label="left" />
+        <Placeholder width={60} height={60} />
+        <Placeholder width={60} height={60} />
+      </Inline>
       <Inline space={2} align="center">
         <Placeholder width={60} height={60} />
-        <Placeholder width={60} height={60} />
-        <Placeholder width={60} height={60} />
-        <Placeholder width={60} height={60} />
-        <Placeholder width={60} height={60} />
-        <Placeholder width={60} height={60} />
-        <Placeholder width={60} height={60} />
+        <Placeholder width={60} height={60} label="center" />
         <Placeholder width={60} height={60} />
       </Inline>
-    </Box>
-  </Story>
-</Canvas>
-
-### Align to right
-
-<Canvas>
-  <Story name="Align to right">
-    <Box width={240}>
       <Inline space={2} align="right">
         <Placeholder width={60} height={60} />
         <Placeholder width={60} height={60} />
-        <Placeholder width={60} height={60} />
-        <Placeholder width={60} height={60} />
-        <Placeholder width={60} height={60} />
-        <Placeholder width={60} height={60} />
-        <Placeholder width={60} height={60} />
-        <Placeholder width={60} height={60} />
+        <Placeholder width={60} height={60} label="right" />
       </Inline>
-    </Box>
+    </Stack>
   </Story>
 </Canvas>
 

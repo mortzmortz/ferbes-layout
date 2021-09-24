@@ -1,4 +1,4 @@
-import { AllHTMLAttributes, ReactNode } from 'react';
+import * as React from 'react';
 import styled from '@emotion/styled';
 import shouldForwardProp from '@styled-system/should-forward-prop';
 import {
@@ -53,9 +53,9 @@ export type BoxProps = PositionProps &
   ShadowProps &
   BackgroundProps &
   TypographyProps &
-  AllHTMLAttributes<HTMLElement> & {
+  React.AllHTMLAttributes<HTMLElement> & {
     as?: As;
-    children?: ReactNode;
+    children?: React.ReactNode;
   };
 
 type As<P = any> = React.ElementType<P>;
