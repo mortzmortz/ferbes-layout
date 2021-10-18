@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.7](https://github.com/mortzmortz/ferbes-layout/compare/v0.0.6...v0.0.7) (2021-10-18)
+
+
+### Features
+
+* **storybook:** switch to dark mode ([833e31d](https://github.com/mortzmortz/ferbes-layout/commit/833e31dca245ef297dc706e260a8c59ca8432dde))
+* **storybook:** use system font inside stories ([ed0ed0b](https://github.com/mortzmortz/ferbes-layout/commit/ed0ed0b7f149cecefa5876f3d358eddfb1e847e8))
+
 ### [0.0.6](https://github.com/mortzmortz/ferbes-layout/compare/v0.0.5...v0.0.6) (2021-09-24)
 
 
