@@ -3,9 +3,9 @@ import { create, themes } from '@storybook/theming';
 
 // https://storybook.js.org/docs/configurations/theming/#create-a-theme-quickstart
 const customTheme = create({
-  ...themes.light,
+  ...themes.dark,
   brandTitle: 'Ferbes Layout',
-  // brandImage: '/logo.svg',
+  // brandImage: './logo.svg',
 });
 
 addons.setConfig({
