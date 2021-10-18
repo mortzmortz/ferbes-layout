@@ -20,8 +20,8 @@ import {
   ShadowProps,
   BackgroundProps,
   TypographyProps,
-  FlexProps as StyledSystemFlexProps,
   FlexboxProps,
+  GridProps,
 } from 'styled-system';
 
 const Flex = styled('div', { shouldForwardProp })<FlexProps>(
@@ -47,7 +47,7 @@ const Flex = styled('div', { shouldForwardProp })<FlexProps>(
 export type FlexProps = PositionProps &
   LayoutProps &
   FlexboxProps &
-  StyledSystemFlexProps &
+  GridProps &
   SpaceProps &
   ColorProps &
   BorderProps &

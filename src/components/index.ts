@@ -11,3 +11,4 @@ export { Inline } from './Inline';
 export { Placeholder } from './Placeholder';
 export { Ratio } from './Ratio';
 export { Stack } from './Stack';
+export { Tiles } from './Tiles';

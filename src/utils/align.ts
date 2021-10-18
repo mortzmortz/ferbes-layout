@@ -1,7 +1,18 @@
-// TODO: TS: use responsive props here
-export type Align = string | string[];
+export type Align =
+  | 'left'
+  | 'center'
+  | 'right'
+  | Array<'left' | 'center' | 'right' | null | undefined>;
+export type AlignY =
+  | 'top'
+  | 'center'
+  | 'bottom'
+  | Array<'top' | 'center' | 'bottom' | null | undefined>;
 
-const mapValues = (value: Align, valueMap: object) => {
+const mapValues = (
+  value: string | Array<string | null | undefined>,
+  valueMap: object
+) => {
   if (value === undefined) return value;
 
   // If it's not a responsive prop, just map it directly
@@ -9,7 +20,12 @@ const mapValues = (value: Align, valueMap: object) => {
     return valueMap[value];
   }
 
-  return Array.isArray(value) ? value.map(x => valueMap[x]) : undefined;
+  return Array.isArray(value)
+    ? value.map((x, index) => {
+        if (typeof x === 'number' || typeof x === 'string') return valueMap[x];
+        return null;
+      })
+    : undefined;
 };
 
 const alignToFlex = (align: Align) =>
@@ -19,7 +35,7 @@ const alignToFlex = (align: Align) =>
     right: 'flex-end',
   });
 
-const alignYToFlex = (align: Align) =>
+const alignYToFlex = (align: AlignY) =>
   mapValues(align, {
     top: 'flex-start',
     center: 'center',

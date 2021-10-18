@@ -22,7 +22,6 @@ import {
   BackgroundProps,
   TypographyProps,
   GridProps as StyledSystemGridProps,
-  FlexProps,
   FlexboxProps,
 } from 'styled-system';
 
@@ -49,7 +48,6 @@ const Grid = styled('div', { shouldForwardProp })<GridProps>(
 export type GridProps = PositionProps &
   LayoutProps &
   StyledSystemGridProps &
-  FlexProps &
   FlexboxProps &
   SpaceProps &
   ColorProps &

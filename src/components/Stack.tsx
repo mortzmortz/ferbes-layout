@@ -1,7 +1,8 @@
 import * as React from 'react';
+import flattenChildren from 'react-keyed-flatten-children';
+import { SpaceProps } from 'styled-system';
 import { Box } from './Box';
 import { alignToFlex, Align } from '../utils/align';
-import { SpaceProps } from 'styled-system';
 
 const resolveFlexProps = (align: Align) => ({
   display: 'flex',
@@ -11,7 +12,7 @@ const resolveFlexProps = (align: Align) => ({
 
 const Stack = React.forwardRef<HTMLDivElement, StackProps>(
   ({ space = null, align, children }, ref) => {
-    const stackItems = React.Children.toArray(children);
+    const stackItems = flattenChildren(children);
     const stackCount = stackItems.length;
     const flexProps = align ? resolveFlexProps(align) : {};
 
@@ -33,7 +34,6 @@ const Stack = React.forwardRef<HTMLDivElement, StackProps>(
   }
 );
 
-// TODO: TS Align: use responsive prop types
 export type StackProps = {
   children?: React.ReactNode;
   align?: Align;

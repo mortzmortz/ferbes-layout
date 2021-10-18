@@ -1,17 +1,17 @@
 import * as React from 'react';
 import { useTheme } from './FerbesProvider';
 import { Flex } from './Flex';
-import { alignYToFlex, Align } from '../utils/align';
+import { alignYToFlex, Align, AlignY, alignToFlex } from '../utils/align';
 import { resolveResponsiveProps } from '../utils/resolveResponsiveProps';
 import { SpaceProps } from 'styled-system';
+import { ColumnProps } from './Column';
 
 const spaceToNegativeMarginLeft = (space: SpaceProps['marginLeft']) =>
   Array.isArray(space)
-    ? // @ts-ignore
-      space.map(s => (s !== null ? -s : null))
+    ? space.map(s => (s !== null ? -Number(s) : null))
     : typeof space === 'number'
     ? -space
-    : `-${String(space)}`;
+    : -Number(space);
 
 const ColumnContext = React.createContext<ColumnContextValue>({
   paddingLeft: [],
@@ -19,9 +19,10 @@ const ColumnContext = React.createContext<ColumnContextValue>({
 });
 
 const Columns = React.forwardRef<HTMLDivElement, ColumnsProps>(
-  ({ space = null, alignY, collapseBelow = 0, children }, ref) => {
+  ({ space = 0, align, alignY, collapseBelow = 0, children }, ref) => {
     const { breakpoints } = useTheme();
-    const alignFlex = alignY ? alignYToFlex(alignY) : null;
+    const alignFlex = align ? alignToFlex(align) : null;
+    const alignYFlex = alignY ? alignYToFlex(alignY) : null;
     const negativeMarginLeft = spaceToNegativeMarginLeft(space);
     const flexDirection = resolveResponsiveProps(
       { below: collapseBelow, breakpoints },
@@ -44,7 +45,8 @@ const Columns = React.forwardRef<HTMLDivElement, ColumnsProps>(
       <Flex
         ref={ref}
         marginLeft={marginLeft}
-        alignItems={alignFlex}
+        alignItems={alignYFlex}
+        justifyContent={alignFlex}
         flexDirection={flexDirection}
       >
         <ColumnContext.Provider value={{ paddingLeft, paddingTop }}>
@@ -55,10 +57,13 @@ const Columns = React.forwardRef<HTMLDivElement, ColumnsProps>(
   }
 );
 
-// TODO: TS Align: use responsive prop types
 export type ColumnsProps = {
-  children?: React.ReactNode;
-  alignY?: Align;
+  children:
+    | Array<React.ReactElement<ColumnProps> | null>
+    | React.ReactElement<ColumnProps>
+    | null;
+  align?: Align;
+  alignY?: AlignY;
   collapseBelow?: number;
   space?: SpaceProps['paddingLeft'];
 };

@@ -1,13 +1,14 @@
 import * as React from 'react';
 import { get, SpaceProps } from 'styled-system';
 import styled from '@emotion/styled';
+import flattenChildren from 'react-keyed-flatten-children';
 import { useTheme } from './FerbesProvider';
 import { Box } from './Box';
 import { Flex } from './Flex';
-import { alignToFlex, alignYToFlex } from '../utils/align';
+import { alignToFlex, alignYToFlex, Align, AlignY } from '../utils/align';
 import { resolveResponsiveProps } from '../utils/resolveResponsiveProps';
 
-// TODO: split alignItems and justifyContent or handle with display inline-flex ?
+// TODO: split alignItems and justifyContent or handle with display inline-flex?
 const Inline = React.forwardRef<HTMLDivElement, InlineProps>(
   ({ space = null, align, alignY, collapseBelow, children }, ref) => {
     const theme = useTheme();
@@ -30,7 +31,7 @@ const Inline = React.forwardRef<HTMLDivElement, InlineProps>(
           flexDirection={flexDirection}
           ref={ref}
         >
-          {React.Children.map(children, child =>
+          {React.Children.map(flattenChildren(children), child =>
             child !== null && child !== undefined ? (
               <Box paddingLeft={space} paddingTop={space}>
                 {child}
@@ -45,15 +46,13 @@ const Inline = React.forwardRef<HTMLDivElement, InlineProps>(
 
 export type InlineProps = {
   children?: React.ReactNode;
-  align?: 'left' | 'center' | 'right' | string[];
-  alignY?: 'top' | 'center' | 'bottom' | string[];
+  align?: Align;
+  alignY?: AlignY;
   collapseBelow?: number;
   space?: SpaceProps['padding'];
 };
 
 const NegativeMarginTop = styled(Box)<NegativeMarginTopProps>`
-  padding-top: 1px;
-
   &::before {
     content: '';
     display: block;

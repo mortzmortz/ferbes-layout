@@ -14,7 +14,6 @@ import {
   typography,
   PositionProps,
   LayoutProps,
-  FlexProps,
   SpaceProps,
   ColorProps,
   BorderProps,
@@ -22,6 +21,7 @@ import {
   BackgroundProps,
   TypographyProps,
   FlexboxProps,
+  GridProps,
 } from 'styled-system';
 
 const Box = styled('div', { shouldForwardProp })<BoxProps>(
@@ -46,7 +46,7 @@ const Box = styled('div', { shouldForwardProp })<BoxProps>(
 export type BoxProps = PositionProps &
   LayoutProps &
   FlexboxProps &
-  FlexProps &
+  GridProps &
   SpaceProps &
   ColorProps &
   BorderProps &
