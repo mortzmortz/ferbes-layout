@@ -6,6 +6,8 @@ import { defaultTheme } from '../src/defaultTheme';
 const storybookStyles = css`
   body {
     background-color: #fff;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+      Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   }
 `;
 
