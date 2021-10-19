@@ -16,7 +16,9 @@
     "suppressImplicitAnyIndexErrors": true,
     "noImplicitAny": false,
     "removeComments": true,
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "jsxImportSource": "@emotion/react"
   },
-  "include": ["src"]
+  "include": ["src"],
+  "exclude": ["node_modules"]
 }

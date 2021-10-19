@@ -27,21 +27,19 @@
     "node": ">=14.17.0"
   },
   "scripts": {
+    "start": "start-storybook -s .storybook/public -p 9000",
     "build": "cross-env NODE_ENV=production rollup -c",
-    "build:watch": "rollup -c -w",
-    "export": "npm pack",
-    "release": "standard-version",
+    "storybook:build": "build-storybook -o ./docs/storybook -s .storybook/public --docs",
     "prepack": "yarn clean && yarn build && yarn test",
     "test": "jest src --coverage --colors --passWithNoTests",
     "test:watch": "jest src --watch",
-    "start": "start-storybook -s .storybook/public -p 9000",
-    "storybook:build": "build-storybook -o ./docs/storybook -s .storybook/public --docs",
+    "release": "standard-version",
     "analyze": "npx source-map-explorer 'dist/esm/*.js'",
     "lint": "eslint src",
     "clean": "rm -rf dist"
   },
   "dependencies": {
-    "@emotion/react": "^11.5.0",
+    "@emotion/react": "11.5.0",
     "@emotion/styled": "11.3.0",
     "@styled-system/should-forward-prop": "5.1.5",
     "@types/prop-types": "15.7.4",
@@ -49,7 +47,7 @@
     "@types/resize-observer-browser": "0.1.6",
     "@types/styled-system": "5.1.13",
     "@types/styled-system__should-forward-prop": "5.1.2",
-    "react-keyed-flatten-children": "^1.3.0",
+    "react-keyed-flatten-children": "1.3.0",
     "styled-system": "5.1.5"
   },
   "peerDependencies": {
@@ -62,10 +60,10 @@
     "@babel/preset-env": "7.15.8",
     "@babel/preset-react": "7.14.5",
     "@babel/preset-typescript": "7.15.0",
-    "@emotion/babel-plugin": "^11.3.0",
-    "@emotion/eslint-plugin": "^11.5.0",
+    "@emotion/babel-preset-css-prop": "11.2.0",
+    "@emotion/eslint-plugin": "11.5.0",
     "@rollup/plugin-babel": "5.3.0",
-    "@rollup/plugin-node-resolve": "13.0.5",
+    "@rollup/plugin-node-resolve": "13.0.6",
     "@storybook/addon-docs": "6.3.12",
     "@storybook/addon-links": "6.3.12",
     "@storybook/react": "6.3.12",
@@ -87,7 +85,7 @@
     "eslint-plugin-prettier": "4.0.0",
     "eslint-plugin-react": "7.26.1",
     "eslint-plugin-react-hooks": "4.2.0",
-    "jest": "27.3.0",
+    "jest": "27.3.1",
     "prettier": "2.4.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -119,31 +117,12 @@
     "parser": "@typescript-eslint/parser",
     "extends": [
       "react-app",
-      "prettier",
-      "prettier/@typescript-eslint"
-    ],
-    "plugins": [
-      "@typescript-eslint",
-      "@emotion",
-      "react-hooks",
       "prettier"
     ],
-    "parserOptions": {
-      "sourceType": "module",
-      "ecmaFeatures": {
-        "jsx": true
-      }
-    },
-    "env": {
-      "es6": true,
-      "browser": true,
-      "jest": true
-    },
-    "settings": {
-      "react": {
-        "version": "detect"
-      }
-    },
+    "plugins": [
+      "@emotion",
+      "prettier"
+    ],
     "rules": {
       "prettier/prettier": [
         "error",
@@ -154,17 +133,10 @@
           "bracketSpacing": true
         }
       ],
-      "react-hooks/rules-of-hooks": "error",
-      "react-hooks/exhaustive-deps": "warn",
-      "@emotion/jsx-import": "error",
       "@emotion/no-vanilla": "error",
       "@emotion/import-from-emotion": "error",
       "@emotion/styled-import": "error",
-      "@emotion/pkg-renaming": "error",
-      "no-use-before-define": "off",
-      "@typescript-eslint/no-use-before-define": [
-        "error"
-      ]
+      "@emotion/pkg-renaming": "error"
     }
   },
   "eslintIgnore": [
