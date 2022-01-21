@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.10](https://github.com/mortzmortz/ferbes-layout/compare/v0.0.9...v0.0.10) (2022-01-21)
+
+
+### Features
+
+* **Stack:** add optional dividers ([79d4ea9](https://github.com/mortzmortz/ferbes-layout/commit/79d4ea9fce5d3b752660e3b75c890be2df3fe1a6))
+
+
+### Bug Fixes
+
+* prevent conflicting emotion versions in projects using emotion outside ferbes-layout ([53b258e](https://github.com/mortzmortz/ferbes-layout/commit/53b258eeaa8d315b611b8b87110d20a7c229f2e7))
+
 ### [0.0.9](https://github.com/mortzmortz/ferbes-layout/compare/v0.0.8...v0.0.9) (2021-11-30)
 
 ### [0.0.8](https://github.com/mortzmortz/ferbes-layout/compare/v0.0.7...v0.0.8) (2021-10-19)
