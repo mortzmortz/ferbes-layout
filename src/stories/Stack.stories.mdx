@@ -27,38 +27,38 @@ import { Stack, Box, Flex, Placeholder } from '../components';
   </Story>
 </Canvas>
 
-### Align to left
+### Dividers
 
 <Canvas>
-  <Story name="Align to left">
-    <Stack space="2" align="left">
-      <Placeholder width={40} height={40} />
-      <Placeholder width={60} height={40} />
-      <Placeholder width={80} height={40} />
+  <Story name="Dividers">
+    <Stack space="4" dividers="cornflowerblue">
+      <Placeholder height={40} />
+      <Placeholder height={40} />
+      <Placeholder height={40} />
     </Stack>
   </Story>
 </Canvas>
 
-### Align to center
+### Horizontal Alignment
 
 <Canvas>
-  <Story name="Align to center">
-    <Stack space="2" align="center">
-      <Placeholder width={40} height={40} />
-      <Placeholder width={60} height={40} />
-      <Placeholder width={80} height={40} />
-    </Stack>
-  </Story>
-</Canvas>
-
-### Align to right
-
-<Canvas>
-  <Story name="Align to right">
-    <Stack space="2" align="right">
-      <Placeholder width={40} height={40} />
-      <Placeholder width={60} height={40} />
-      <Placeholder width={80} height={40} />
+  <Story name="Horizontal Alignment">
+    <Stack space="8" dividers>
+      <Stack space="2" align="left">
+        <Placeholder width={40} height={40} label="left" />
+        <Placeholder width={60} height={40} />
+        <Placeholder width={80} height={40} />
+      </Stack>
+      <Stack space="2" align="center">
+        <Placeholder width={40} height={40} />
+        <Placeholder width={60} height={40} label="center" />
+        <Placeholder width={80} height={40} />
+      </Stack>
+      <Stack space="2" align="right">
+        <Placeholder width={40} height={40} />
+        <Placeholder width={60} height={40} />
+        <Placeholder width={80} height={40} label="right" />
+      </Stack>
     </Stack>
   </Story>
 </Canvas>

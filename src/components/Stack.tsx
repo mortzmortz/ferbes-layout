@@ -2,6 +2,7 @@ import * as React from 'react';
 import flattenChildren from 'react-keyed-flatten-children';
 import { SpaceProps } from 'styled-system';
 import { Box } from './Box';
+import { Divider } from './Divider';
 import { alignToFlex, Align } from '../utils/align';
 
 const resolveFlexProps = (align: Align) => ({
@@ -11,7 +12,7 @@ const resolveFlexProps = (align: Align) => ({
 });
 
 const Stack = React.forwardRef<HTMLDivElement, StackProps>(
-  ({ space = null, align, children }, ref) => {
+  ({ space = null, align, dividers = false, children }, ref) => {
     const stackItems = flattenChildren(children);
     const stackCount = stackItems.length;
     const flexProps = align ? resolveFlexProps(align) : {};
@@ -25,6 +26,15 @@ const Stack = React.forwardRef<HTMLDivElement, StackProps>(
               paddingBottom={index !== stackCount - 1 ? space : null}
               {...flexProps}
             >
+              {dividers && index > 0 ? (
+                <Box width="100%" pb={space}>
+                  {typeof dividers === 'string' ? (
+                    <Divider color={dividers} />
+                  ) : (
+                    <Divider />
+                  )}
+                </Box>
+              ) : null}
               {child}
             </Box>
           ) : null
@@ -38,6 +48,7 @@ export type StackProps = {
   children?: React.ReactNode;
   align?: Align;
   space?: SpaceProps['paddingBottom'];
+  dividers?: boolean;
 };
 
 Stack.displayName = 'Stack';
