@@ -9,9 +9,9 @@
 ## Setup
 
 ```bash
-$ npm i ferbes-layout @emotion/react @emotion/styled
+$ npm i ferbes-layout
 # or
-$ yarn add ferbes-layout @emotion/react @emotion/styled
+$ yarn add ferbes-layout
 ```
 
 ## Documentation
@@ -39,8 +39,7 @@ const App = () => <FerbesProvider theme={theme}>...</FerbesProvider>;
 ### Adding global styles
 
 ```jsx
-import { css } from '@emotion/react';
-import { FerbesProvider } from 'ferbes-layout';
+import { FerbesProvider, css } from 'ferbes-layout';
 
 const styles = css`
   body {
