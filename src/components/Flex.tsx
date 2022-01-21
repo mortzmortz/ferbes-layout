@@ -47,13 +47,13 @@ const Flex = styled('div', { shouldForwardProp })<FlexProps>(
 export type FlexProps = PositionProps &
   LayoutProps &
   FlexboxProps &
-  GridProps &
   SpaceProps &
   ColorProps &
   BorderProps &
   ShadowProps &
   BackgroundProps &
   TypographyProps &
+  GridProps &
   React.AllHTMLAttributes<HTMLElement> & {
     as?: As;
     children?: React.ReactNode;

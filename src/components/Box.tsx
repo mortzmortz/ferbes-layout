@@ -46,13 +46,13 @@ const Box = styled('div', { shouldForwardProp })<BoxProps>(
 export type BoxProps = PositionProps &
   LayoutProps &
   FlexboxProps &
-  GridProps &
   SpaceProps &
   ColorProps &
   BorderProps &
   ShadowProps &
   BackgroundProps &
   TypographyProps &
+  GridProps &
   React.AllHTMLAttributes<HTMLElement> & {
     as?: As;
     children?: React.ReactNode;

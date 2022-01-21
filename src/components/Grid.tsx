@@ -47,7 +47,6 @@ const Grid = styled('div', { shouldForwardProp })<GridProps>(
 
 export type GridProps = PositionProps &
   LayoutProps &
-  StyledSystemGridProps &
   FlexboxProps &
   SpaceProps &
   ColorProps &
@@ -55,6 +54,7 @@ export type GridProps = PositionProps &
   ShadowProps &
   BackgroundProps &
   TypographyProps &
+  StyledSystemGridProps &
   React.AllHTMLAttributes<HTMLElement> & {
     as?: As;
     children?: React.ReactNode;

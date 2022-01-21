@@ -4,8 +4,8 @@ import FerbesDecorator from './FerbesDecorator';
 
 const SORT_ORDER = {
   Introduction: ['Getting Started'],
-  Components: [],
   Logic: [],
+  Components: [],
 };
 
 addParameters({
