@@ -5,7 +5,9 @@
   Ferbes Layout is a set of useful layout components.
   <br/>
   <br/>
+
   [![npm](https://img.shields.io/npm/v/ferbes-layout.svg?style=for-the-badge)](https://www.npmjs.com/package/ferbes-layout)
+ 
   <hr/>
 </div>
 
