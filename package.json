@@ -3,6 +3,7 @@
   "version": "0.0.10",
   "description": "Layout Components for React Applications",
   "author": "Gerion Herbst<gerion@gmx.com>",
+  "homepage": "https://ferbes-layout.netlify.app",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mortzmortz/ferbes-layout.git"

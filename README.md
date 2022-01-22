@@ -1,10 +1,15 @@
 <div align="center" >
   <h3>Ferbes Layout</h3>
+  <br/>
+  <br/>
+  Ferbes Layout is a set of useful layout components.
+  <br/>
+  <br/>
+  [![npm](https://img.shields.io/npm/v/ferbes-layout.svg?style=for-the-badge)](https://www.npmjs.com/package/ferbes-layout)
+  <hr/>
 </div>
 
----
-
-`Ferbes Layout` is based on [Emotion](https://emotion.sh) and [Styled System](https://styled-system.com).
+[Documentation](https://ferbes-layout.netlify.app)
 
 ## Setup
 
@@ -109,14 +114,6 @@ const MyComponent = () => {
 }
 ```
 
-## Local Development
+## License
 
-```bash
-$ yarn
-```
-
-Start a local Storybook server:
-
-```bash
-$ yarn start
-```
+MIT.
