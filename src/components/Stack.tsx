@@ -48,7 +48,7 @@ export type StackProps = {
   children?: React.ReactNode;
   align?: Align;
   space?: SpaceProps['paddingBottom'];
-  dividers?: boolean;
+  dividers?: boolean | string;
 };
 
 Stack.displayName = 'Stack';
