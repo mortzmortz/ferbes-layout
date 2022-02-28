@@ -1,66 +1,18 @@
-import * as React from 'react';
 import styled from '@emotion/styled';
-import shouldForwardProp from '@styled-system/should-forward-prop';
-import {
-  position,
-  border,
-  space,
-  layout,
-  background,
-  color,
-  grid,
-  flex,
-  flexbox,
-  shadow,
-  typography,
-  PositionProps,
-  LayoutProps,
-  SpaceProps,
-  ColorProps,
-  BorderProps,
-  ShadowProps,
-  BackgroundProps,
-  TypographyProps,
-  GridProps as StyledSystemGridProps,
-  FlexboxProps,
-} from 'styled-system';
+import shouldForwardProp from '../utils/shouldForwardProp';
+import { allBoxProps } from './Box';
+import type { BoxProps } from './Box';
 
-const Grid = styled('div', { shouldForwardProp })<GridProps>(
+const Grid = styled('div', { shouldForwardProp })<BoxProps>(
   () => ({
     display: 'grid',
+    minWidth: 0,
     margin: 0,
     padding: 0,
     boxSizing: 'border-box',
   }),
-  grid,
-  position,
-  layout,
-  space,
-  color,
-  background,
-  border,
-  flex,
-  flexbox,
-  shadow,
-  typography
+  allBoxProps
 );
-
-export type GridProps = PositionProps &
-  LayoutProps &
-  FlexboxProps &
-  SpaceProps &
-  ColorProps &
-  BorderProps &
-  ShadowProps &
-  BackgroundProps &
-  TypographyProps &
-  StyledSystemGridProps &
-  React.AllHTMLAttributes<HTMLElement> & {
-    as?: As;
-    children?: React.ReactNode;
-  };
-
-type As<P = any> = React.ElementType<P>;
 
 Grid.displayName = 'Grid';
 export { Grid };
