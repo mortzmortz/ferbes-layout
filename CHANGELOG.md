@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.12](https://github.com/mortzmortz/ferbes-layout/compare/v0.0.11...v0.0.12) (2022-02-28)
+
+
+### Features
+
+* add more style props ([952214a](https://github.com/mortzmortz/ferbes-layout/commit/952214a2ede368feef286b602c112b55748f9310))
+* **Stack:** fix types ([409566b](https://github.com/mortzmortz/ferbes-layout/commit/409566bd6b987599c2d058c39b9f36b5162f58ae))
+
 ### [0.0.11](https://github.com/mortzmortz/ferbes-layout/compare/v0.0.10...v0.0.11) (2022-01-23)
 
 ### [0.0.10](https://github.com/mortzmortz/ferbes-layout/compare/v0.0.9...v0.0.10) (2022-01-21)
