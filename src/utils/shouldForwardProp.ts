@@ -33,7 +33,14 @@ const all = compose(
   colorStyle
 );
 
-const customProps = ['transform', 'transition', 'pointerEvents', 'visibility'];
+const customProps = [
+  'transform',
+  'transition',
+  'pointerEvents',
+  'visibility',
+  'fill',
+  'stroke',
+];
 const props = all.propNames ? [...all.propNames, ...customProps] : [];
 
 const createShouldForwardProp = props => {

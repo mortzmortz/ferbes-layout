@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import shouldForwardProp from '../utils/shouldForwardProp';
-import { allBoxProps } from './Box';
-import type { BoxProps } from './Box';
+import { allBoxProps } from '../utils/box-props';
+import type { BoxProps } from '../utils/box-props';
 
 const Grid = styled('div', { shouldForwardProp })<BoxProps>(
   () => ({
