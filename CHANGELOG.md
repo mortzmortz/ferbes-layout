@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.14](https://github.com/mortzmortz/ferbes-layout/compare/v0.0.13...v0.0.14) (2022-03-05)
+
+
+### Bug Fixes
+
+* prevent cursor prop from showing up in the dom ([2b58d4b](https://github.com/mortzmortz/ferbes-layout/commit/2b58d4b4b5b86178c161a913743a8316f0a60fa3))
+
 ### [0.0.13](https://github.com/mortzmortz/ferbes-layout/compare/v0.0.12...v0.0.13) (2022-03-01)
 
 

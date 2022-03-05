@@ -1,6 +1,6 @@
 {
   "name": "ferbes-layout",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "description": "Layout Components for React Applications",
   "author": "Gerion Herbst<gerion@gmx.com>",
   "homepage": "https://ferbes-layout.netlify.app",
