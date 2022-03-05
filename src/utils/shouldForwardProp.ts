@@ -40,6 +40,7 @@ const customProps = [
   'visibility',
   'fill',
   'stroke',
+  'cursor',
 ];
 const props = all.propNames ? [...all.propNames, ...customProps] : [];
 
