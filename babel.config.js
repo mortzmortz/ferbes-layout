@@ -20,13 +20,17 @@ module.exports = {
     ],
     '@babel/preset-react',
     '@babel/preset-typescript',
+  ],
+  plugins: [
     [
-      '@emotion/babel-preset-css-prop',
+      '@emotion',
       {
+        sourceMap: true,
         autoLabel: 'dev-only',
         labelFormat: '[local]',
+        cssPropOptimization: true,
       },
     ],
+    ['@babel/plugin-proposal-optional-chaining', { loose: true }],
   ],
-  plugins: [['@babel/plugin-proposal-optional-chaining', { loose: true }]],
 };

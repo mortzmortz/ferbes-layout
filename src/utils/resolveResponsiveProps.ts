@@ -21,13 +21,10 @@ const resolveResponsiveProps = (
   }
 
   const lower =
-    below !== undefined && typeof below === 'number' && below !== 0
+    below !== undefined && below !== 0
       ? Math.min(below, breakpoints.length + 1)
       : -1;
-  const higher =
-    above !== undefined && typeof above === 'number'
-      ? above
-      : breakpoints.length + 1;
+  const higher = above !== undefined ? above : breakpoints.length + 1;
 
   if (lower > higher) {
     return [null];
@@ -36,9 +33,9 @@ const resolveResponsiveProps = (
   return [
     ...Array.from({ length: breakpoints.length + 1 }).map((_, i) => {
       if (i <= lower || i > higher) {
-        return Array.isArray(values[0]) ? values[0][i] || null : values[0];
+        return Array.isArray(values[0]) ? values[0][i] ?? null : values[0];
       }
-      return Array.isArray(values[1]) ? values[1][i] || null : values[1];
+      return Array.isArray(values[1]) ? values[1][i] ?? null : values[1];
     }),
   ];
 };

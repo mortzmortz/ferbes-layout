@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
-import { allBoxProps } from '../utils/box-props';
-import type { BoxProps } from '../utils/box-props';
-import shouldForwardProp from '../utils/shouldForwardProp';
+import { allBoxProps } from '../../utils/box-props';
+import type { BoxProps } from '../../utils/box-props';
+import shouldForwardProp from '../../utils/shouldForwardProp';
 
 const Box = styled('div', {
   shouldForwardProp,

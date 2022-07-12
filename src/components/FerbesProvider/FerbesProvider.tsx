@@ -7,9 +7,9 @@ import {
 } from '@emotion/react';
 import FocusVisibleProvider, {
   hideFocusRingsDataAttribute,
-} from '../utils/FocusVisibleProvider';
+} from '../../utils/FocusVisibleProvider';
 import { Theme } from 'styled-system';
-import { defaultTheme } from '../defaultTheme';
+import { defaultTheme } from '../../defaultTheme';
 
 const ThemeContext = React.createContext<Theme>(defaultTheme);
 const useTheme = (): Theme => {
@@ -45,6 +45,7 @@ const FerbesProvider: React.FC<FerbesProviderProps> = ({
 };
 
 export type FerbesProviderProps = {
+  children?: React.ReactNode;
   theme?: Theme;
   styles?: SerializedStyles;
   hideFocusRings?: boolean;

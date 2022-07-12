@@ -1,4 +1,5 @@
 import * as CSS from 'csstype';
+import { AllHTMLAttributes, ElementType, ReactNode } from 'react';
 import {
   position,
   border,
@@ -84,6 +85,9 @@ export interface OtherProps<
     ThemeType
   >;
   easing?: ResponsiveValue<ThemeValue<'easings', ThemeType>, ThemeType>;
+  animationDuration?:
+    | ResponsiveValue<CSS.Property.AnimationDelay, ThemeType>
+    | ResponsiveValue<number>;
 }
 
 const config: Config = {
@@ -140,6 +144,13 @@ const config: Config = {
     property: 'transitionTimingFunction',
     scale: 'easings',
   },
+  animationDuration: {
+    property: 'animationDuration',
+    transform: (value: any) => {
+      if (typeof value === 'number') return `${value}ms`;
+      else return value;
+    },
+  },
 };
 // Alias
 config.easing = config.transitionTimingFunction;
@@ -174,12 +185,15 @@ type BoxProps = PositionProps &
   TypographyProps &
   GridProps &
   OtherProps &
-  React.AllHTMLAttributes<HTMLElement> & {
+  Omit<
+    AllHTMLAttributes<HTMLElement>,
+    'width' | 'height' | 'as' | 'children'
+  > & {
     as?: As;
-    children?: React.ReactNode;
+    children?: ReactNode | ReactNode[];
   };
 
-type As<P = any> = React.ElementType<P>;
+type As<P = any> = ElementType<P>;
 
 export { allBoxProps };
 export type { BoxProps };

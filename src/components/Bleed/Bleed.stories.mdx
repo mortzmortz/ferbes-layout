@@ -1,0 +1,99 @@
+import { Story, Canvas, ArgsTable, Meta } from '@storybook/addon-docs';
+import { Box, Bleed, Stack, Tiles, Placeholder } from '../';
+
+<Meta title="Components/Bleed" component={Bleed} />
+
+# Bleed
+
+Applies a negative margin to allow the content to bleed out into a the surrounding layout. As such it is important to ensure that size and direction of the bleed is accommodated by the parent layout.
+
+<Canvas withSource="open">
+  <Story name="Base">
+    <Box px="8">
+      <Stack space="4">
+        <Placeholder height={40} />
+        <Bleed horizontal="8">
+          <Placeholder height={40} />
+        </Bleed>
+        <Placeholder height={40} />
+      </Stack>
+    </Box>
+  </Story>
+</Canvas>
+
+### Vertical
+
+Contents will bleed into the surrounding layout vertically using the <b>vertical</b> prop.
+
+<Canvas>
+  <Story name="Vertical">
+    <Box padding="8" backgroundColor="dodgerblue">
+      <Bleed vertical="8">
+        <Placeholder height={100} />
+      </Bleed>
+    </Box>
+  </Story>
+</Canvas>
+
+### Horizontal
+
+Contents will bleed into the surrounding layout horizontally using the <b>horizontal</b> prop.
+
+<Canvas>
+  <Story name="Horizontal">
+    <Box padding="8" backgroundColor="dodgerblue">
+      <Bleed horizontal="8">
+        <Placeholder height={100} />
+      </Bleed>
+    </Box>
+  </Story>
+</Canvas>
+
+### Specific Direction
+
+Contents will bleed into the surrounding layout in a specified direction using the <b>top</b>, <b>bottom</b>, <b>left</b>, or <b>right</b> prop.
+
+<Canvas>
+  <Story name="Specific Direction">
+    <Tiles columns={2} space="4">
+      <Box padding="4" backgroundColor="dodgerblue">
+        <Bleed top="4">
+          <Placeholder height={80} label="top" />
+        </Bleed>
+      </Box>
+      <Box padding="4" backgroundColor="dodgerblue">
+        <Bleed bottom="4">
+          <Placeholder height={80} label="bottom" />
+        </Bleed>
+      </Box>
+      <Box padding="4" backgroundColor="dodgerblue">
+        <Bleed left="4">
+          <Placeholder height={80} label="left" />
+        </Bleed>
+      </Box>
+      <Box padding="4" backgroundColor="dodgerblue">
+        <Bleed right="4">
+          <Placeholder height={80} label="right" />
+        </Bleed>
+      </Box>
+    </Tiles>
+  </Story>
+</Canvas>
+
+### All directions
+
+Contents will bleed into the surrounding layout in all directions using the <b>space</b> prop.
+
+<Canvas>
+  <Story name="All Directions">
+    <Box padding="8" backgroundColor="dodgerblue">
+      <Bleed space="8">
+        <Placeholder height={100} />
+      </Bleed>
+    </Box>
+  </Story>
+</Canvas>
+
+## Props
+
+<ArgsTable of={Bleed} />

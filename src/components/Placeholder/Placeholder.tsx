@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled from '@emotion/styled';
-import { Box } from './Box';
+import { Box } from '../Box/Box';
 
 const Placeholder = React.forwardRef<HTMLDivElement, PlaceholderProps>(
   ({ width = 'auto', height = 120, label }, ref) => (

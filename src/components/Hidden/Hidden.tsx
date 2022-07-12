@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { Box } from './Box';
-import { useTheme } from './FerbesProvider';
-import { resolveResponsiveProps } from '../utils/resolveResponsiveProps';
+import { Box } from '../Box/Box';
+import { useTheme } from '../FerbesProvider/FerbesProvider';
+import { resolveResponsiveProps } from '../../utils/resolveResponsiveProps';
 
 const Hidden = React.forwardRef<HTMLDivElement, HiddenProps>(
   ({ above, below, children }, ref) => {

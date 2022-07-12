@@ -1,9 +1,9 @@
 import * as React from 'react';
 import flattenChildren from 'react-keyed-flatten-children';
 import { SpaceProps } from 'styled-system';
-import { Box } from './Box';
-import { Divider } from './Divider';
-import { alignToFlex, Align } from '../utils/align';
+import { Box } from '../Box/Box';
+import { Divider } from '../Divider/Divider';
+import { alignToFlex, Align } from '../../utils/align';
 
 const resolveFlexProps = (align: Align) => ({
   display: 'flex',

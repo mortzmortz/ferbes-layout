@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled from '@emotion/styled';
-import { Box } from './Box';
+import { Box } from '../Box/Box';
 import { ColumnContext } from './Columns';
 
 export type ColumnProps = {

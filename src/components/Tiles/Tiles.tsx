@@ -2,9 +2,9 @@ import * as React from 'react';
 import { get, SpaceProps } from 'styled-system';
 import styled from '@emotion/styled';
 import flattenChildren from 'react-keyed-flatten-children';
-import { useTheme } from './FerbesProvider';
-import { Box } from './Box';
-import { Flex } from './Flex';
+import { useTheme } from '../FerbesProvider/FerbesProvider';
+import { Box } from '../Box/Box';
+import { Flex } from '../Flex/Flex';
 
 const responsiveFlex = (columns: TilesProps['columns']) =>
   Array.isArray(columns)

@@ -80,12 +80,19 @@ describe('resolveResponsiveProps', () => {
   });
 
   describe('responsive values', () => {
-    it('values is array', () => {
-      const result = resolveResponsiveProps({ below: 1, breakpoints }, [
-        ['hey', 'ho'],
-        1,
+    it('first arg of values is array', () => {
+      const result = resolveResponsiveProps({ below: 2, breakpoints }, [
+        [8, 16],
+        'auto',
       ]);
-      expect(result).toStrictEqual(['hey', 'ho', 1, 1, 1]);
+      expect(result).toStrictEqual([8, 16, null, 'auto', 'auto']);
+    });
+    it('second arg of values is array', () => {
+      const result = resolveResponsiveProps({ below: 1, breakpoints }, [
+        'auto',
+        [8, 16, 32, 64],
+      ]);
+      expect(result).toStrictEqual(['auto', 'auto', 32, 64, null]);
     });
   });
 

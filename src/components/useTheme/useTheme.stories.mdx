@@ -1,0 +1,27 @@
+import { Meta, Canvas, Story } from '@storybook/addon-docs';
+import { Box } from '../';
+
+<Meta title="Logic/useTheme" />
+
+<Box maxWidth="720px">
+
+# useTheme
+
+<br />
+<br />
+
+If you need direct access to the theme tokens, you can use the `useTheme` hook.
+
+```jsx
+import { useTheme, Box } from '@3pc/layout-components-react';
+
+const MyComponent = () => {
+  const { colors } = useTheme();
+
+  return <Box backgroundColor={colors.primary[1]} />;
+};
+```
+
+> Nevertheless, to ensure consistency in your app, it is recommended to only use the available theme tokens.
+
+</Box>

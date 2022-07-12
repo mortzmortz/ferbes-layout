@@ -1,0 +1,44 @@
+import { Story, Canvas, ArgsTable, Meta } from '@storybook/addon-docs';
+import { Tiles, Placeholder } from '../';
+
+<Meta title="Components/Tiles" component={Tiles} />
+
+# Tiles
+
+<Canvas>
+  <Story name="Base">
+    <Tiles columns="4" space="4">
+      <Placeholder height={60} />
+      <Placeholder height={60} />
+      <Placeholder height={60} />
+      <Placeholder height={60} />
+      <Placeholder height={60} />
+      <Placeholder height={60} />
+      <Placeholder height={60} />
+      <Placeholder height={60} />
+      <Placeholder height={60} />
+    </Tiles>
+  </Story>
+</Canvas>
+
+### Responsive number of columns
+
+<Canvas>
+  <Story name="Responsive">
+    <Tiles columns={[1, 2, 3, 4]} space="4">
+      <Placeholder height={60} />
+      <Placeholder height={60} />
+      <Placeholder height={60} />
+      <Placeholder height={60} />
+      <Placeholder height={60} />
+      <Placeholder height={60} />
+      <Placeholder height={60} />
+      <Placeholder height={60} />
+      <Placeholder height={60} />
+    </Tiles>
+  </Story>
+</Canvas>
+
+## Props
+
+<ArgsTable of={Tiles} />

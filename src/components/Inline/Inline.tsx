@@ -1,19 +1,18 @@
 import * as React from 'react';
-import { get, SpaceProps } from 'styled-system';
-import styled from '@emotion/styled';
+import { SpaceProps } from 'styled-system';
 import flattenChildren from 'react-keyed-flatten-children';
-import { useTheme } from './FerbesProvider';
-import { Box } from './Box';
-import { Flex } from './Flex';
-import { alignToFlex, alignYToFlex, Align, AlignY } from '../utils/align';
-import { resolveResponsiveProps } from '../utils/resolveResponsiveProps';
+import { useTheme } from '../FerbesProvider/FerbesProvider';
+import { Box } from '../Box/Box';
+import { Flex } from '../Flex/Flex';
+import { alignToFlex, alignYToFlex, Align, AlignY } from '../../utils/align';
+import { resolveResponsiveProps } from '../../utils/resolveResponsiveProps';
+import { mapToNegativeValue } from '../../utils/mapToNegativeValue';
 
 // TODO: split alignItems and justifyContent or handle with display inline-flex?
 const Inline = React.forwardRef<HTMLDivElement, InlineProps>(
   ({ space = null, align, alignY, collapseBelow, children }, ref) => {
     const theme = useTheme();
-    const negativeSpace = !space ? 0 : -Number(space);
-    const marginTop = get(theme.space, Number(space));
+    const negativeSpace = mapToNegativeValue(space);
     const alignFlex = align ? alignToFlex(align) : null;
     const alignYFlex = alignY ? alignYToFlex(alignY) : null;
     const flexDirection = resolveResponsiveProps(
@@ -22,7 +21,7 @@ const Inline = React.forwardRef<HTMLDivElement, InlineProps>(
     );
 
     return (
-      <NegativeMarginTop pseudoMarginTop={marginTop}>
+      <Box marginTop={negativeSpace}>
         <Flex
           justifyContent={alignFlex}
           flexWrap="wrap"
@@ -39,7 +38,7 @@ const Inline = React.forwardRef<HTMLDivElement, InlineProps>(
             ) : null
           )}
         </Flex>
-      </NegativeMarginTop>
+      </Box>
     );
   }
 );
@@ -50,18 +49,6 @@ export type InlineProps = {
   alignY?: AlignY;
   collapseBelow?: number;
   space?: SpaceProps['padding'];
-};
-
-const NegativeMarginTop = styled(Box)<NegativeMarginTopProps>`
-  &::before {
-    content: '';
-    display: block;
-    margin-top: -${(p: NegativeMarginTopProps) => p.pseudoMarginTop};
-  }
-`;
-
-type NegativeMarginTopProps = {
-  pseudoMarginTop: string;
 };
 
 Inline.displayName = 'Inline';
