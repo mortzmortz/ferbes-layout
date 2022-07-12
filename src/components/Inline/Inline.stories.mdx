@@ -1,5 +1,5 @@
 import { Story, Canvas, ArgsTable, Meta } from '@storybook/addon-docs';
-import { Box, Inline, Placeholder, Stack } from '../';
+import { Inline, Placeholder, Stack } from '../';
 
 <Meta title="Components/Inline" component={Inline} />
 
@@ -7,41 +7,20 @@ import { Box, Inline, Placeholder, Stack } from '../';
 
 <Canvas withSource="open">
   <Story name="Base">
-    <Box>
-      <Inline space="4">
-        <Placeholder width={20} height={48} />
-        <Placeholder width={80} height={48} />
-        <Placeholder width={40} height={48} />
-        <Placeholder width={150} height={48} />
-        <Placeholder width={120} height={48} />
-        <Placeholder width={60} height={48} />
-        <Placeholder width={40} height={48} />
-        <Placeholder width={180} height={48} />
-        <Placeholder width={100} height={48} />
-        <Placeholder width={60} height={48} />
-        <Placeholder width={120} height={48} />
-        <Placeholder width={40} height={48} />
-      </Inline>
-    </Box>
-  </Story>
-</Canvas>
-
-### Space
-
-<Canvas>
-  <Story name="Space">
-    <Box>
-      <Inline space="12">
-        <Placeholder width={60} height={60} />
-        <Placeholder width={60} height={60} />
-        <Placeholder width={60} height={60} />
-        <Placeholder width={60} height={60} />
-        <Placeholder width={60} height={60} />
-        <Placeholder width={60} height={60} />
-        <Placeholder width={60} height={60} />
-        <Placeholder width={60} height={60} />
-      </Inline>
-    </Box>
+    <Inline space="4">
+      <Placeholder width={20} height={48} />
+      <Placeholder width={80} height={48} />
+      <Placeholder width={40} height={48} />
+      <Placeholder width={150} height={48} />
+      <Placeholder width={120} height={48} />
+      <Placeholder width={60} height={48} />
+      <Placeholder width={40} height={48} />
+      <Placeholder width={180} height={48} />
+      <Placeholder width={100} height={48} />
+      <Placeholder width={60} height={48} />
+      <Placeholder width={120} height={48} />
+      <Placeholder width={40} height={48} />
+    </Inline>
   </Story>
 </Canvas>
 
@@ -50,17 +29,17 @@ import { Box, Inline, Placeholder, Stack } from '../';
 <Canvas>
   <Story name="Vertical alignment">
     <Stack space="6" align="center">
-      <Inline space={2} alignY="top">
+      <Inline space="2" alignY="top">
         <Placeholder width={60} height={20} />
         <Placeholder width={60} height={60} label="top" />
         <Placeholder width={60} height={20} />
       </Inline>
-      <Inline space={2} alignY="center">
+      <Inline space="2" alignY="center">
         <Placeholder width={60} height={20} />
         <Placeholder width={60} height={60} label="center" />
         <Placeholder width={60} height={20} />
       </Inline>
-      <Inline space={2} alignY="bottom">
+      <Inline space="2" alignY="bottom">
         <Placeholder width={60} height={20} />
         <Placeholder width={60} height={60} label="bottom" />
         <Placeholder width={60} height={20} />
@@ -74,17 +53,17 @@ import { Box, Inline, Placeholder, Stack } from '../';
 <Canvas>
   <Story name="Horizontal alignment">
     <Stack space="6">
-      <Inline space={2} align="left">
+      <Inline space="2" alignX="left">
         <Placeholder width={60} height={60} label="left" />
         <Placeholder width={60} height={60} />
         <Placeholder width={60} height={60} />
       </Inline>
-      <Inline space={2} align="center">
+      <Inline space="2" alignX="center">
         <Placeholder width={60} height={60} />
         <Placeholder width={60} height={60} label="center" />
         <Placeholder width={60} height={60} />
       </Inline>
-      <Inline space={2} align="right">
+      <Inline space="2" alignX="right">
         <Placeholder width={60} height={60} />
         <Placeholder width={60} height={60} />
         <Placeholder width={60} height={60} label="right" />
@@ -95,13 +74,13 @@ import { Box, Inline, Placeholder, Stack } from '../';
 
 ### Collapse below
 
-The `collapseBelow` prop allows to stack children below a certain breakpoint.<br />
-The number you pass to `collapseBelow` corresponds to the index of the `breakpoints`
+The `collapse` prop allows to stack children below a certain breakpoint.<br />
+The number you pass to `collapse` corresponds to the index of the `breakpoints`
 array of your theme.
 
 <Canvas>
   <Story name="Collapse below">
-    <Inline collapseBelow={1} space={2}>
+    <Inline collapse="bp2" space="2">
       <Placeholder width={60} height={60} />
       <Placeholder width={60} height={60} />
       <Placeholder width={60} height={60} />
@@ -113,7 +92,7 @@ array of your theme.
 
 <Canvas>
   <Story name="Collapse below with align center">
-    <Inline collapseBelow={1} space={2} align="center">
+    <Inline collapse="bp2" space="2" alignX="center">
       <Placeholder width={60} height={60} />
       <Placeholder width={60} height={60} />
       <Placeholder width={60} height={60} />
@@ -125,7 +104,14 @@ array of your theme.
 
 <Canvas>
   <Story name="Collapse below with responsive align">
-    <Inline collapseBelow={1} space={2} align={['left', 'left', 'right']}>
+    <Inline
+      collapse="bp2"
+      space="2"
+      alignX={{
+        '@initial': 'center',
+        '@bp2': 'right',
+      }}
+    >
       <Placeholder width={60} height={60} />
       <Placeholder width={60} height={60} />
       <Placeholder width={60} height={60} />

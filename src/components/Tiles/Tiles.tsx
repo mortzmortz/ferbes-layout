@@ -1,55 +1,75 @@
 import * as React from 'react';
-import { get, SpaceProps } from 'styled-system';
-import styled from '@emotion/styled';
 import flattenChildren from 'react-keyed-flatten-children';
-import { useTheme } from '../FerbesProvider/FerbesProvider';
+import type * as Stitches from '@stitches/react';
+import { ResponsiveSpace, styled } from '../../stitches.config';
+import { spaceToNegativeSpace } from '../../utils';
 import { Box } from '../Box/Box';
-import { Flex } from '../Flex/Flex';
 
-const responsiveFlex = (columns: TilesProps['columns']) =>
-  Array.isArray(columns)
-    ? columns.map(c => (c !== null ? `0 0 ${100 / Number(c)}%` : null))
-    : `0 0 ${100 / Number(columns)}%`;
+const TileBox = styled(Box, {
+  variants: {
+    columns: {
+      1: {
+        flex: `0 0 100%`,
+      },
+      2: {
+        flex: `0 0 50%`,
+      },
+      3: {
+        flex: `0 0 33.33%`,
+      },
+      4: {
+        flex: `0 0 25%`,
+      },
+      5: {
+        flex: `0 0 20%`,
+      },
+      6: {
+        flex: `0 0 16.66%`,
+      },
+      7: {
+        flex: `0 0 14.28%`,
+      },
+      8: {
+        flex: `0 0 12.5%`,
+      },
+      9: {
+        flex: `0 0 11.11%`,
+      },
+    },
+  },
+});
 
 const Tiles = React.forwardRef<HTMLDivElement, TilesProps>(
-  ({ space = null, columns = 1, children }, ref) => {
-    const theme = useTheme();
-    const negativeSpace = !space ? 0 : -Number(space);
-    const marginTop = get(theme.space, Number(space));
-    const flex = responsiveFlex(columns);
+  ({ space, columns = 1, children }, ref) => {
+    const negativeSpace = spaceToNegativeSpace(space);
 
     return (
-      <NegativeMarginTop pseudoMarginTop={marginTop}>
-        <Flex flexWrap="wrap" marginLeft={negativeSpace} ref={ref}>
+      <Box marginTop={negativeSpace}>
+        <Box
+          css={{
+            display: 'flex',
+            flexWrap: 'wrap',
+          }}
+          marginLeft={negativeSpace}
+          ref={ref}
+        >
           {React.Children.map(flattenChildren(children), child =>
             child !== null && child !== undefined ? (
-              <Box paddingLeft={space} paddingTop={space} flex={flex}>
+              <TileBox columns={columns} paddingLeft={space} paddingTop={space}>
                 {child}
-              </Box>
+              </TileBox>
             ) : null
           )}
-        </Flex>
-      </NegativeMarginTop>
+        </Box>
+      </Box>
     );
   }
 );
 
-const NegativeMarginTop = styled(Box)<NegativeMarginTopProps>`
-  &::before {
-    content: '';
-    display: block;
-    margin-top: -${(p: NegativeMarginTopProps) => p.pseudoMarginTop};
-  }
-`;
-
-type NegativeMarginTopProps = {
-  pseudoMarginTop: string;
-};
-
 export type TilesProps = {
   children: React.ReactNode;
-  columns?: number | string | Array<number | string | null | undefined>;
-  space?: SpaceProps['paddingLeft'];
+  columns?: Stitches.VariantProps<typeof TileBox>['columns'];
+  space?: ResponsiveSpace;
 };
 
 Tiles.displayName = 'Tiles';

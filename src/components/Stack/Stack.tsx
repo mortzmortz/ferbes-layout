@@ -1,54 +1,72 @@
 import * as React from 'react';
 import flattenChildren from 'react-keyed-flatten-children';
-import { SpaceProps } from 'styled-system';
+import type * as Stitches from '@stitches/react';
+import { CSS, styled } from '../../stitches.config';
 import { Box } from '../Box/Box';
-import { Divider } from '../Divider/Divider';
-import { alignToFlex, Align } from '../../utils/align';
+import type { ResponsiveSpace } from '../../stitches.config';
 
-const resolveFlexProps = (align: Align) => ({
+const childWithGap = '> * + *';
+
+const StackElem = styled('div', {
   display: 'flex',
-  flexDirection: 'column',
-  alignItems: alignToFlex(align),
+  boxSizing: 'border-box',
+  minWidth: 0,
+
+  $$gap: 'initial',
+  $$dividerColor: 'none',
+
+  variants: {
+    direction: {
+      column: {
+        flexDirection: 'column',
+        [childWithGap]: { margin: '$$gap 0 0 0' },
+      },
+    },
+    dividers: {
+      true: {
+        [childWithGap]: {
+          borderTop: '1px solid $$dividerColor',
+          paddingTop: '$$gap',
+        },
+      },
+    },
+    align: {
+      center: {
+        alignItems: 'center',
+      },
+      left: {
+        alignItems: 'flex-start',
+      },
+      right: {
+        alignItems: 'flex-end',
+      },
+    },
+  },
+  defaultVariants: {
+    direction: 'column',
+  },
 });
 
-const Stack = React.forwardRef<HTMLDivElement, StackProps>(
-  ({ space = null, align, dividers = false, children }, ref) => {
-    const stackItems = flattenChildren(children);
-    const stackCount = stackItems.length;
-    const flexProps = align ? resolveFlexProps(align) : {};
+function Stack({ space, align, dividers, children }: StitchesProps) {
+  const css: CSS = {};
+  css.stackGap = space ? (`$${space}` as any) : undefined; // TODO: fix types and responsive space
+  css.stackDividerColor = dividers;
+  const hasDividers = Boolean(dividers);
 
-    return (
-      <Box ref={ref}>
-        {stackItems.map((child, index) =>
-          child !== null && child !== undefined ? (
-            <Box
-              key={index}
-              paddingBottom={index !== stackCount - 1 ? space : null}
-              {...flexProps}
-            >
-              {dividers && index > 0 ? (
-                <Box width="100%" pb={space}>
-                  {typeof dividers === 'string' ? (
-                    <Divider color={dividers} />
-                  ) : (
-                    <Divider />
-                  )}
-                </Box>
-              ) : null}
-              {child}
-            </Box>
-          ) : null
-        )}
-      </Box>
-    );
-  }
-);
+  return (
+    <StackElem css={css} align={align} dividers={hasDividers}>
+      {React.Children.map(flattenChildren(children), child =>
+        child !== null && child !== undefined ? <Box>{child}</Box> : null
+      )}
+    </StackElem>
+  );
+}
 
-export type StackProps = {
+type StitchesProps = {
   children?: React.ReactNode;
-  align?: Align;
-  space?: SpaceProps['paddingBottom'];
-  dividers?: boolean | string;
+  space?: ResponsiveSpace;
+  align?: Stitches.VariantProps<typeof StackElem>['align'];
+  dividers?: Stitches.PropertyValue<'borderColor'>;
 };
 
 Stack.displayName = 'Stack';

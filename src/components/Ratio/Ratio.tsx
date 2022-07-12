@@ -1,28 +1,36 @@
-import styled from '@emotion/styled';
+import { Box } from '../Box/Box';
 
-const Ratio = styled.div<RatioProps>`
-  position: relative;
-  box-sizing: border-box;
+function ratioStyles(ratio?: number) {
+  const paddingBottom = ratio ? `${(1 / ratio || 0.5) * 100}%` : '56.25%';
+  return {
+    position: 'relative',
+    boxSizing: 'border-box',
+    minWidth: 0,
+    '&::after': {
+      content: '""',
+      display: 'block',
+      height: 0,
+      paddingBottom,
+    },
+    '& > *': {
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      width: '100%',
+      height: '100%',
+    },
+  };
+}
 
-  &::after {
-    content: '';
-    display: block;
-    height: 0;
-    padding-bottom: ${p =>
-      p.ratio ? `${(1 / p.ratio || 0.5) * 100}%` : '56.25%'};
-  }
+function Ratio({ ratio, children }: RatioProps) {
+  const styles = ratioStyles(ratio);
 
-  > * {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
-`;
+  return <Box css={styles}>{children}</Box>;
+}
 
 export type RatioProps = {
-  ratio: number;
+  children?: React.ReactNode;
+  ratio?: number;
 };
 
 Ratio.displayName = 'Ratio';

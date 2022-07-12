@@ -7,7 +7,11 @@ import { Box, Stack, Inline, Placeholder } from '../';
 
 <Canvas withSource="open">
   <Story name="Base">
-    <Box>
+    <Box
+      css={{
+        backgroundColor: 'dodgerBlue',
+      }}
+    >
       <Placeholder height={100} />
     </Box>
   </Story>
@@ -17,49 +21,150 @@ import { Box, Stack, Inline, Placeholder } from '../';
 
 <Canvas>
   <Story name="Padding">
-    <Stack space="5" align="center">
-      <Inline space="5" align="center" alignY="center">
-        <Box backgroundColor="dodgerblue" borderRadius={3} padding="5">
-          <Box backgroundColor="lightpink" borderRadius={3} padding="5">
-            <div>padding</div>
+    <Stack space="5" alignX="center">
+      <Inline space="5" alignX="center" alignY="center">
+        <Box
+          css={{
+            backgroundColor: 'lightblue',
+          }}
+          borderRadius="3"
+          padding="5"
+        >
+          <Box
+            css={{
+              backgroundColor: 'dodgerBlue',
+            }}
+            borderRadius="3"
+            padding="5"
+          >
+            <p>padding</p>
           </Box>
         </Box>
-        <Box backgroundColor="dodgerblue" borderRadius={3} paddingX="5">
-          <Box backgroundColor="lightpink" borderRadius={3} padding="5">
-            <div>paddingX</div>
+        <Box
+          css={{
+            backgroundColor: 'lightblue',
+          }}
+          borderRadius="3"
+          paddingX="5"
+        >
+          <Box
+            css={{
+              backgroundColor: 'dodgerBlue',
+            }}
+            borderRadius="3"
+            padding="5"
+          >
+            <p>paddingX</p>
           </Box>
         </Box>
-        <Box backgroundColor="dodgerblue" borderRadius={3} paddingY="5">
-          <Box backgroundColor="lightpink" borderRadius={3} padding="5">
-            <div>paddingY</div>
+        <Box
+          css={{
+            backgroundColor: 'lightblue',
+          }}
+          borderRadius="3"
+          paddingY="5"
+        >
+          <Box
+            css={{
+              backgroundColor: 'dodgerBlue',
+            }}
+            borderRadius="3"
+            padding="5"
+          >
+            <p>paddingY</p>
           </Box>
         </Box>
       </Inline>
-      <Inline space="5" align="center">
-        <Inline space="5" align="center" alignY="center">
-          <Box backgroundColor="dodgerblue" borderRadius={3} paddingTop="5">
-            <Box backgroundColor="lightpink" borderRadius={3} padding="5">
-              <div>paddingTop</div>
+      <Inline space="5" alignX="center">
+        <Inline space="5" alignX="center" alignY="center">
+          <Box
+            css={{
+              backgroundColor: 'lightblue',
+            }}
+            borderRadius="3"
+            paddingTop="5"
+          >
+            <Box
+              css={{
+                backgroundColor: 'dodgerBlue',
+              }}
+              borderRadius="3"
+              padding="5"
+            >
+              <p>paddingTop</p>
             </Box>
           </Box>
-          <Box backgroundColor="dodgerblue" borderRadius={3} paddingRight="5">
-            <Box backgroundColor="lightpink" borderRadius={3} padding="5">
-              <div>paddingRight</div>
+          <Box
+            css={{
+              backgroundColor: 'lightblue',
+            }}
+            borderRadius="3"
+            paddingRight="5"
+          >
+            <Box
+              css={{
+                backgroundColor: 'dodgerBlue',
+              }}
+              borderRadius="3"
+              padding="5"
+            >
+              <p>paddingRight</p>
             </Box>
           </Box>
-          <Box backgroundColor="dodgerblue" borderRadius={3} paddingBottom="5">
-            <Box backgroundColor="lightpink" borderRadius={3} padding="5">
-              <div>paddingBottom</div>
+          <Box
+            css={{
+              backgroundColor: 'lightblue',
+            }}
+            borderRadius="3"
+            paddingBottom="5"
+          >
+            <Box
+              css={{
+                backgroundColor: 'dodgerBlue',
+              }}
+              borderRadius="3"
+              padding="5"
+            >
+              <p>paddingBottom</p>
             </Box>
           </Box>
-          <Box backgroundColor="dodgerblue" borderRadius={3} paddingLeft="5">
-            <Box backgroundColor="lightpink" borderRadius={3} padding="5">
-              <div>paddingLeft</div>
+          <Box
+            css={{
+              backgroundColor: 'lightblue',
+            }}
+            borderRadius="3"
+            paddingLeft="5"
+          >
+            <Box
+              css={{
+                backgroundColor: 'dodgerBlue',
+              }}
+              borderRadius="3"
+              padding="5"
+            >
+              <p>paddingLeft</p>
             </Box>
           </Box>
         </Inline>
       </Inline>
     </Stack>
+  </Story>
+</Canvas>
+
+### Responsive Styles
+
+<Canvas>
+  <Story name="Responsive">
+    <Box
+      bg={{
+        '@initial': 'primary',
+        '@bp1': 'primary1',
+        '@bp2': 'primary2',
+        '@bp3': 'primary4',
+      }}
+    >
+      <Placeholder height={100} />
+    </Box>
   </Story>
 </Canvas>
 

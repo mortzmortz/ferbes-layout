@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { Box } from '../Box/Box';
-import { mapToNegativeValue } from '../../utils/mapToNegativeValue';
-import { SpaceProps } from 'styled-system';
-import { BoxProps } from '../../utils/box-props';
+import { spaceToNegativeSpace } from '../../utils';
+import type { ResponsiveSpace } from '../../stitches.config';
 
 const Bleed = React.forwardRef<HTMLDivElement, BleedProps>(
   (
@@ -19,13 +18,14 @@ const Bleed = React.forwardRef<HTMLDivElement, BleedProps>(
     },
     ref
   ) => {
-    const mt = mapToNegativeValue(top || vertical || space);
-    const mb = mapToNegativeValue(bottom || vertical || space);
-    const ml = mapToNegativeValue(left || horizontal || space);
-    const mr = mapToNegativeValue(right || horizontal || space);
+    const mt = spaceToNegativeSpace(top || vertical || space);
+    const mb = spaceToNegativeSpace(bottom || vertical || space);
+    const ml = spaceToNegativeSpace(left || horizontal || space);
+    const mr = spaceToNegativeSpace(right || horizontal || space);
 
     return (
       <Box
+        ref={ref}
         as={as}
         display={as === 'span' ? 'block' : undefined}
         mt={mt}
@@ -33,7 +33,12 @@ const Bleed = React.forwardRef<HTMLDivElement, BleedProps>(
         ml={ml}
         mr={mr}
       >
-        <Box display={as === 'span' ? 'block' : undefined} position="relative">
+        <Box
+          display={as === 'span' ? 'block' : undefined}
+          css={{
+            position: 'relative',
+          }}
+        >
           {children}
         </Box>
       </Box>
@@ -42,15 +47,15 @@ const Bleed = React.forwardRef<HTMLDivElement, BleedProps>(
 );
 
 export type BleedProps = {
-  as?: 'span' | 'div';
-  children?: BoxProps['children'];
-  space?: SpaceProps['margin'];
-  horizontal?: SpaceProps['margin'];
-  vertical?: SpaceProps['margin'];
-  top?: SpaceProps['margin'];
-  bottom?: SpaceProps['margin'];
-  left?: SpaceProps['margin'];
-  right?: SpaceProps['margin'];
+  as?: 'div' | 'span';
+  children?: React.ReactNode;
+  space?: ResponsiveSpace;
+  horizontal?: ResponsiveSpace;
+  vertical?: ResponsiveSpace;
+  top?: ResponsiveSpace;
+  bottom?: ResponsiveSpace;
+  left?: ResponsiveSpace;
+  right?: ResponsiveSpace;
 };
 
 Bleed.displayName = 'Bleed';

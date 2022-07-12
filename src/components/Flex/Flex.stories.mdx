@@ -7,11 +7,19 @@ import { Flex, Box, Placeholder } from '../';
 
 <Canvas withSource="open">
   <Story name="Base">
-    <Flex>
-      <Box flex="0 0 50%">
+    <Flex gap="4">
+      <Box
+        css={{
+          flex: '0 0 50%',
+        }}
+      >
         <Placeholder />
       </Box>
-      <Box flex="0 0 100px">
+      <Box
+        css={{
+          flex: '0 0 100px',
+        }}
+      >
         <Placeholder />
       </Box>
     </Flex>

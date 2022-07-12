@@ -1,18 +1,78 @@
-import styled from '@emotion/styled';
-import shouldForwardProp from '../../utils/shouldForwardProp';
-import { allBoxProps } from '../../utils/box-props';
-import type { BoxProps } from '../../utils/box-props';
+import { styled, tokenVariants } from '../../stitches.config';
 
-const Flex = styled('div', { shouldForwardProp })<BoxProps>(
-  () => ({
-    display: 'flex',
-    minWidth: 0,
-    margin: 0,
-    padding: 0,
-    boxSizing: 'border-box',
-  }),
-  allBoxProps
-);
+export const Flex = styled('div', {
+  display: 'flex',
+  minWidth: 0,
+  boxSizing: 'border-box',
 
-Flex.displayName = 'Flex';
-export { Flex };
+  variants: {
+    direction: {
+      row: {
+        flexDirection: 'row',
+      },
+      column: {
+        flexDirection: 'column',
+      },
+      rowReverse: {
+        flexDirection: 'row-reverse',
+      },
+      columnReverse: {
+        flexDirection: 'column-reverse',
+      },
+    },
+    align: {
+      start: {
+        alignItems: 'flex-start',
+      },
+      center: {
+        alignItems: 'center',
+      },
+      end: {
+        alignItems: 'flex-end',
+      },
+      stretch: {
+        alignItems: 'stretch',
+      },
+      baseline: {
+        alignItems: 'baseline',
+      },
+    },
+    justify: {
+      start: {
+        justifyContent: 'flex-start',
+      },
+      center: {
+        justifyContent: 'center',
+      },
+      end: {
+        justifyContent: 'flex-end',
+      },
+      between: {
+        justifyContent: 'space-between',
+      },
+    },
+    wrap: {
+      noWrap: {
+        flexWrap: 'nowrap',
+      },
+      wrap: {
+        flexWrap: 'wrap',
+      },
+      wrapReverse: {
+        flexWrap: 'wrap-reverse',
+      },
+    },
+    gap: tokenVariants({
+      token: 'space',
+      css: value => ({
+        gap: value,
+      }),
+    }),
+  },
+  defaultVariants: {
+    direction: 'row',
+    align: 'stretch',
+    justify: 'start',
+    wrap: 'noWrap',
+  },
+});

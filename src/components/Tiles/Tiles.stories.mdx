@@ -7,7 +7,7 @@ import { Tiles, Placeholder } from '../';
 
 <Canvas>
   <Story name="Base">
-    <Tiles columns="4" space="4">
+    <Tiles columns={4} space="4">
       <Placeholder height={60} />
       <Placeholder height={60} />
       <Placeholder height={60} />
@@ -25,7 +25,23 @@ import { Tiles, Placeholder } from '../';
 
 <Canvas>
   <Story name="Responsive">
-    <Tiles columns={[1, 2, 3, 4]} space="4">
+    <Tiles
+      columns={{
+        '@initial': 2,
+        '@bp1': 4,
+        '@bp2': 8,
+      }}
+      space={{
+        '@initial': '8',
+        '@bp1': '4',
+        '@bp2': '2',
+      }}
+    >
+      <Placeholder height={60} />
+      <Placeholder height={60} />
+      <Placeholder height={60} />
+      <Placeholder height={60} />
+      <Placeholder height={60} />
       <Placeholder height={60} />
       <Placeholder height={60} />
       <Placeholder height={60} />

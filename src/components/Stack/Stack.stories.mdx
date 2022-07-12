@@ -1,5 +1,5 @@
 import { Story, Canvas, ArgsTable, Meta } from '@storybook/addon-docs';
-import { Stack, Box, Flex, Placeholder } from '../';
+import { Stack, Placeholder } from '../';
 
 <Meta title="Components/Stack" component={Stack} />
 
@@ -7,7 +7,7 @@ import { Stack, Box, Flex, Placeholder } from '../';
 
 <Canvas withSource="open">
   <Story name="Base">
-    <Stack>
+    <Stack space="8">
       <Placeholder height={40} />
       <Placeholder height={40} />
       <Placeholder height={40} />
@@ -15,11 +15,17 @@ import { Stack, Box, Flex, Placeholder } from '../';
   </Story>
 </Canvas>
 
-### Space
+### Responsive Space
 
 <Canvas>
   <Story name="Space">
-    <Stack space="6">
+    <Stack
+      space={{
+        '@initial': '8',
+        '@bp1': '4',
+        '@bp2': '2',
+      }}
+    >
       <Placeholder height={40} />
       <Placeholder height={40} />
       <Placeholder height={40} />
@@ -31,7 +37,7 @@ import { Stack, Box, Flex, Placeholder } from '../';
 
 <Canvas>
   <Story name="Dividers">
-    <Stack space="4" dividers="cornflowerblue">
+    <Stack space="4" dividers="dodgerblue">
       <Placeholder height={40} />
       <Placeholder height={40} />
       <Placeholder height={40} />
@@ -43,7 +49,7 @@ import { Stack, Box, Flex, Placeholder } from '../';
 
 <Canvas>
   <Story name="Horizontal Alignment">
-    <Stack space="8" dividers>
+    <Stack space="8" dividers="dodgerblue">
       <Stack space="2" align="left">
         <Placeholder width={40} height={40} label="left" />
         <Placeholder width={60} height={40} />
@@ -67,7 +73,14 @@ import { Stack, Box, Flex, Placeholder } from '../';
 
 <Canvas>
   <Story name="Responsive alignment">
-    <Stack space="2" align={['left', 'center', 'right']}>
+    <Stack
+      space="2"
+      align={{
+        '@initial': 'left',
+        '@bp1': 'center',
+        '@bp2': 'right',
+      }}
+    >
       <Placeholder width={40} height={40} />
       <Placeholder width={60} height={40} />
       <Placeholder width={80} height={40} />

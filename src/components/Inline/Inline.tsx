@@ -1,54 +1,125 @@
 import * as React from 'react';
-import { SpaceProps } from 'styled-system';
+import type * as Stitches from '@stitches/react';
 import flattenChildren from 'react-keyed-flatten-children';
-import { useTheme } from '../FerbesProvider/FerbesProvider';
+import { config, ResponsiveSpace, styled } from '../../stitches.config';
+import { spaceToNegativeSpace } from '../../utils';
 import { Box } from '../Box/Box';
-import { Flex } from '../Flex/Flex';
-import { alignToFlex, alignYToFlex, Align, AlignY } from '../../utils/align';
-import { resolveResponsiveProps } from '../../utils/resolveResponsiveProps';
-import { mapToNegativeValue } from '../../utils/mapToNegativeValue';
 
-// TODO: split alignItems and justifyContent or handle with display inline-flex?
+export const Inliner = styled(Box, {
+  display: 'flex',
+  flexWrap: 'wrap',
+  variants: {
+    alignX: {
+      left: {
+        justifyContent: 'flex-start',
+      },
+      center: {
+        justifyContent: 'center',
+      },
+      right: {
+        justifyContent: 'flex-end',
+      },
+    },
+    alignY: {
+      top: {
+        alignItems: 'flex-start',
+      },
+      center: {
+        alignItems: 'center',
+      },
+      bottom: {
+        alignItems: 'flex-end',
+      },
+    },
+  },
+});
+
 const Inline = React.forwardRef<HTMLDivElement, InlineProps>(
-  ({ space = null, align, alignY, collapseBelow, children }, ref) => {
-    const theme = useTheme();
-    const negativeSpace = mapToNegativeValue(space);
-    const alignFlex = align ? alignToFlex(align) : null;
-    const alignYFlex = alignY ? alignYToFlex(alignY) : null;
-    const flexDirection = resolveResponsiveProps(
-      { below: collapseBelow, breakpoints: theme.breakpoints },
-      ['column', 'row']
-    );
+  ({ space, alignX, alignY, collapse, children }, ref) => {
+    const negativeSpace = spaceToNegativeSpace(space);
+    const display: Stitches.VariantProps<typeof Box>['display'] = collapse
+      ? {
+          '@initial': 'flex',
+          [`@${collapse}`]: 'block',
+        }
+      : 'block';
+    const inlinerStyles = collapse
+      ? {
+          flexDirection: 'column',
+          [`@${collapse}`]: {
+            flexDirection: 'row',
+          },
+        }
+      : {
+          flexDirection: 'row',
+        };
+    const childStyles = variantToCss('justifyContent', alignX, {
+      left: 'flex-start',
+      right: 'flex-end',
+    });
 
     return (
       <Box marginTop={negativeSpace}>
-        <Flex
-          justifyContent={alignFlex}
-          flexWrap="wrap"
+        <Inliner
           marginLeft={negativeSpace}
-          alignItems={alignYFlex}
-          flexDirection={flexDirection}
+          alignX={alignX}
+          alignY={alignY}
+          css={inlinerStyles}
           ref={ref}
         >
           {React.Children.map(flattenChildren(children), child =>
             child !== null && child !== undefined ? (
-              <Box paddingLeft={space} paddingTop={space}>
+              <Box
+                display={display}
+                paddingLeft={space}
+                paddingTop={space}
+                css={childStyles}
+              >
                 {child}
               </Box>
             ) : null
           )}
-        </Flex>
+        </Inliner>
       </Box>
     );
   }
 );
 
+export function variantToCss(
+  property: string,
+  variant?: Stitches.VariantProps<typeof Inliner>['alignX'],
+  mapper?: { [key: string]: Stitches.CSSProperties['justifyContent'] }
+) {
+  if (!variant) return undefined;
+  if (typeof variant === 'string') {
+    const cssValue = (mapper && mapper[variant]) || variant;
+    return {
+      [property]: cssValue,
+    };
+  }
+
+  const result = {};
+
+  for (const [key, value] of Object.entries(variant)) {
+    const cssValue = (mapper && value && mapper[value]) || value;
+    if (key === '@initial') {
+      result[property] = cssValue;
+    } else {
+      result[key] = {
+        [property]: cssValue,
+      };
+    }
+  }
+
+  return result;
+}
+
 export type InlineProps = {
   children?: React.ReactNode;
-  align?: Align;
-  alignY?: AlignY;
-  collapseBelow?: number;
-  space?: SpaceProps['padding'];
+  space?: ResponsiveSpace;
+  alignX?: Stitches.VariantProps<typeof Inliner>['alignX'];
+  alignY?: Stitches.VariantProps<typeof Inliner>['alignY'];
+  collapse?: keyof typeof config.media;
 };
 
 Inline.displayName = 'Inline';

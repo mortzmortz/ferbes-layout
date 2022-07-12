@@ -1,5 +1,5 @@
 import { Story, Canvas, ArgsTable, Meta } from '@storybook/addon-docs';
-import { Box, Bleed, Stack, Tiles, Placeholder } from '../';
+import { Bleed, Box, Stack, Tiles, Placeholder } from '../';
 
 <Meta title="Components/Bleed" component={Bleed} />
 
@@ -12,7 +12,7 @@ Applies a negative margin to allow the content to bleed out into a the surroundi
     <Box px="8">
       <Stack space="4">
         <Placeholder height={40} />
-        <Bleed horizontal="8">
+        <Bleed horizontal={8}>
           <Placeholder height={40} />
         </Bleed>
         <Placeholder height={40} />
@@ -27,7 +27,12 @@ Contents will bleed into the surrounding layout vertically using the <b>vertical
 
 <Canvas>
   <Story name="Vertical">
-    <Box padding="8" backgroundColor="dodgerblue">
+    <Box
+      padding="8"
+      css={{
+        bg: 'dodgerblue',
+      }}
+    >
       <Bleed vertical="8">
         <Placeholder height={100} />
       </Bleed>
@@ -41,7 +46,12 @@ Contents will bleed into the surrounding layout horizontally using the <b>horizo
 
 <Canvas>
   <Story name="Horizontal">
-    <Box padding="8" backgroundColor="dodgerblue">
+    <Box
+      padding="8"
+      css={{
+        bg: 'dodgerblue',
+      }}
+    >
       <Bleed horizontal="8">
         <Placeholder height={100} />
       </Bleed>
@@ -56,22 +66,42 @@ Contents will bleed into the surrounding layout in a specified direction using t
 <Canvas>
   <Story name="Specific Direction">
     <Tiles columns={2} space="4">
-      <Box padding="4" backgroundColor="dodgerblue">
+      <Box
+        padding="4"
+        css={{
+          bg: 'dodgerblue',
+        }}
+      >
         <Bleed top="4">
           <Placeholder height={80} label="top" />
         </Bleed>
       </Box>
-      <Box padding="4" backgroundColor="dodgerblue">
+      <Box
+        padding="4"
+        css={{
+          bg: 'dodgerblue',
+        }}
+      >
         <Bleed bottom="4">
           <Placeholder height={80} label="bottom" />
         </Bleed>
       </Box>
-      <Box padding="4" backgroundColor="dodgerblue">
+      <Box
+        padding="4"
+        css={{
+          bg: 'dodgerblue',
+        }}
+      >
         <Bleed left="4">
           <Placeholder height={80} label="left" />
         </Bleed>
       </Box>
-      <Box padding="4" backgroundColor="dodgerblue">
+      <Box
+        padding="4"
+        css={{
+          bg: 'dodgerblue',
+        }}
+      >
         <Bleed right="4">
           <Placeholder height={80} label="right" />
         </Bleed>
@@ -86,9 +116,43 @@ Contents will bleed into the surrounding layout in all directions using the <b>s
 
 <Canvas>
   <Story name="All Directions">
-    <Box padding="8" backgroundColor="dodgerblue">
-      <Bleed space="8">
+    <Box
+      padding="8"
+      css={{
+        bg: 'dodgerblue',
+      }}
+    >
+      <Bleed space={8}>
         <Placeholder height={100} />
+      </Bleed>
+    </Box>
+  </Story>
+</Canvas>
+
+### Responsive Space
+
+<Canvas>
+  <Story name="Responsive">
+    <Box
+      padding={{
+        '@initial': '2',
+        '@bp1': '4',
+        '@bp2': '8',
+        '@bp3': '16',
+      }}
+      css={{
+        bg: 'dodgerblue',
+      }}
+    >
+      <Bleed
+        space={{
+          '@initial': '2',
+          '@bp1': '4',
+          '@bp2': '8',
+          '@bp3': '16',
+        }}
+      >
+        <Placeholder height={200} />
       </Bleed>
     </Box>
   </Story>

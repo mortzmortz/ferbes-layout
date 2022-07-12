@@ -1,5 +1,13 @@
-import styled from '@emotion/styled';
-import { css } from '@emotion/react';
-
 export * from './components';
-export { styled, css };
+
+// Stitches
+export {
+  styled,
+  css,
+  theme,
+  createTheme,
+  getCssText,
+  globalCss,
+  keyframes,
+  config,
+} from './stitches.config';

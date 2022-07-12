@@ -1,0 +1,20 @@
+import { Story, Canvas, ArgsTable, Meta } from '@storybook/addon-docs';
+import { Ratio, Box, Placeholder } from '../';
+
+<Meta title="Components/Ratio" component={Ratio} />
+
+# Ratio
+
+<Canvas withSource="open">
+  <Story name="Base">
+    <Ratio ratio={10 / 3}>
+      <Box>
+        <Placeholder width="100%" height="100%" />
+      </Box>
+    </Ratio>
+  </Story>
+</Canvas>
+
+## Props
+
+<ArgsTable of={Ratio} />

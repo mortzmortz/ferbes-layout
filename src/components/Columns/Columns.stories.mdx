@@ -33,6 +33,28 @@ import { Column, Columns, Stack, Placeholder } from '../';
   </Story>
 </Canvas>
 
+### Responsive Space
+
+<Canvas>
+  <Story name="Responsive Space">
+    <Columns
+      space={{
+        '@initial': 2,
+        '@bp1': 8,
+        '@bp2': 16,
+        '@bp3': 32,
+      }}
+    >
+      <Column>
+        <Placeholder width="100%" height={60} />
+      </Column>
+      <Column>
+        <Placeholder width="100%" height={60} />
+      </Column>
+    </Columns>
+  </Story>
+</Canvas>
+
 ### Width
 
 <Canvas>
@@ -135,7 +157,7 @@ import { Column, Columns, Stack, Placeholder } from '../';
 <Canvas>
   <Story name="Horizontal Alignement">
     <Stack space="8">
-      <Columns space="2" align="left">
+      <Columns space="2" alignX="left">
         <Column width={1 / 5}>
           <Placeholder height={20} label="left" />
         </Column>
@@ -143,12 +165,12 @@ import { Column, Columns, Stack, Placeholder } from '../';
           <Placeholder height={20} />
         </Column>
       </Columns>
-      <Columns align="center">
+      <Columns alignX="center">
         <Column width={2 / 5}>
           <Placeholder height={20} label="center" />
         </Column>
       </Columns>
-      <Columns space="2" align="right">
+      <Columns space="2" alignX="right">
         <Column width={1 / 5}>
           <Placeholder height={20} />
         </Column>
@@ -160,15 +182,11 @@ import { Column, Columns, Stack, Placeholder } from '../';
   </Story>
 </Canvas>
 
-### Collapse below
-
-The `collapseBelow` prop allows to stack children below a certain breakpoint.<br />
-The number you pass to `collapseBelow` corresponds to the index of the `breakpoints`
-array of your theme.
+# Collapse
 
 <Canvas>
-  <Story name="Collapse below">
-    <Columns space={[2, 8, 16, 32]} collapseBelow={1}>
+  <Story name="Collapse">
+    <Columns space={4} collapse="bp2">
       <Column>
         <Placeholder width="100%" height={60} />
       </Column>

@@ -11,7 +11,7 @@ const customTheme = create({
 addons.setConfig({
   theme: customTheme,
   isFullscreen: false,
-  showPanel: true,
+  showPanel: false,
   panelPosition: 'bottom',
   isToolshown: true,
 });

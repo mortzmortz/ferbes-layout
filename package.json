@@ -11,8 +11,7 @@
   "keywords": [
     "react",
     "design system",
-    "styled system",
-    "emotion",
+    "stitches",
     "storybook"
   ],
   "license": "MIT",
@@ -29,82 +28,63 @@
   },
   "scripts": {
     "start": "cross-env NODE_ENV=development start-storybook -p 9000",
-    "build": "cross-env NODE_ENV=production rollup -c",
     "storybook:build": "build-storybook -o ./docs --docs",
+    "build": "cross-env NODE_ENV=production rollup -c",
     "release": "standard-version",
     "prepack": "yarn clean && yarn build && yarn test",
-    "test": "jest src --coverage --colors --passWithNoTests",
-    "test:watch": "jest src --watch",
+    "test": "vitest --passWithNoTests",
+    "coverage": "vitest run --coverage",
     "analyze": "npx source-map-explorer 'dist/esm/*.js'",
     "lint": "eslint src",
     "clean": "rm -rf dist",
     "clean-install": "rm -rf node_modules/ && yarn cache clean && yarn install --pure-lockfile"
   },
   "dependencies": {
-    "@emotion/is-prop-valid": "^1.1.3",
-    "@emotion/memoize": "^0.7.5",
-    "@emotion/react": "11.9.3",
-    "@emotion/styled": "11.9.3",
-    "@styled-system/should-forward-prop": "5.1.5",
-    "@types/react": "18.0.14",
-    "@types/resize-observer-browser": "0.1.7",
-    "@types/styled-system": "5.1.15",
-    "@types/styled-system__should-forward-prop": "5.1.2",
-    "react-keyed-flatten-children": "^1.3.0",
-    "styled-system": "5.1.5"
+    "@stitches/react": "^1.2.8",
+    "react-keyed-flatten-children": "^1.3.0"
   },
   "peerDependencies": {
     "react": "^16.8.0 || ^17.0.0 || ^18.0.0",
     "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0"
   },
   "devDependencies": {
-    "@babel/plugin-proposal-optional-chaining": "7.17.12",
-    "@babel/plugin-transform-runtime": "7.18.5",
-    "@babel/preset-env": "7.18.2",
-    "@babel/preset-react": "7.17.12",
-    "@babel/preset-typescript": "7.17.12",
-    "@emotion/babel-plugin": "^11.9.2",
-    "@emotion/eslint-plugin": "^11.7.0",
+    "@babel/core": "^7.18.6",
+    "@babel/plugin-transform-runtime": "7.18.6",
+    "@babel/preset-env": "7.18.6",
+    "@babel/preset-react": "7.18.6",
+    "@babel/preset-typescript": "7.18.6",
     "@rollup/plugin-babel": "5.3.1",
     "@rollup/plugin-node-resolve": "13.3.0",
+    "@storybook/addon-actions": "^6.5.9",
     "@storybook/addon-docs": "6.5.9",
-    "@storybook/addon-links": "6.5.9",
-    "@storybook/react": "6.5.9",
+    "@storybook/addon-essentials": "^6.5.9",
+    "@storybook/addon-interactions": "^6.5.9",
+    "@storybook/addon-links": "^6.5.9",
+    "@storybook/builder-vite": "^0.1.39",
+    "@storybook/react": "^6.5.9",
+    "@storybook/testing-library": "^0.0.13",
     "@storybook/theming": "6.5.9",
-    "@testing-library/jest-dom": "5.16.4",
-    "@testing-library/react-hooks": "8.0.1",
-    "@typescript-eslint/eslint-plugin": "5.29.0",
-    "@typescript-eslint/parser": "5.29.0",
-    "babel-eslint": "10.1.0",
-    "babel-loader": "8.2.5",
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "@typescript-eslint/eslint-plugin": "5.30.5",
+    "@typescript-eslint/parser": "5.30.5",
+    "@vitejs/plugin-react": "^1.3.0",
+    "babel-loader": "^8.2.5",
     "cross-env": "7.0.3",
-    "eslint": "8.18.0",
+    "eslint": "8.19.0",
     "eslint-config-prettier": "8.5.0",
     "eslint-config-react-app": "7.0.1",
-    "eslint-plugin-prettier": "4.0.0",
-    "jest": "28.1.1",
+    "eslint-plugin-prettier": "4.2.1",
     "prettier": "2.7.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
     "rollup": "2.75.7",
     "rollup-plugin-peer-deps-external": "2.2.4",
     "rollup-plugin-typescript2": "0.32.1",
     "standard-version": "9.5.0",
-    "typescript": "4.7.4"
-  },
-  "jest": {
-    "watchPathIgnorePatterns": [
-      "docs",
-      "dist"
-    ],
-    "collectCoverage": false,
-    "collectCoverageFrom": [
-      "src/utils/**/*.(ts|tsx)",
-      "!**/node_modules/**"
-    ],
-    "setupFilesAfterEnv": [
-      "<rootDir>/setup.tests.js"
-    ]
+    "typescript": "^4.6.3",
+    "vite": "^2.9.9",
+    "vitest": "^0.17.1"
   },
   "prettier": {
     "singleQuote": true,
@@ -119,7 +99,6 @@
       "prettier"
     ],
     "plugins": [
-      "@emotion",
       "prettier"
     ],
     "parserOptions": {
@@ -147,11 +126,7 @@
           "arrowParens": "avoid",
           "bracketSpacing": true
         }
-      ],
-      "@emotion/no-vanilla": "error",
-      "@emotion/import-from-emotion": "error",
-      "@emotion/styled-import": "error",
-      "@emotion/pkg-renaming": "error"
+      ]
     }
   },
   "eslintIgnore": [
