@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.2.0-next.0](https://github.com/mortzmortz/ferbes-layout/compare/v0.1.0...v0.2.0-next.0) (2022-07-12)
+
+
+### ⚠ BREAKING CHANGES
+
+* migrate to stitches and vite
+
+### Features
+
+* migrate to stitches and vite ([c586cc5](https://github.com/mortzmortz/ferbes-layout/commit/c586cc530b85d20719a610b82257bbc6e94a0132))
+
 ## [0.1.0](https://github.com/mortzmortz/ferbes-layout/compare/v0.0.14...v0.1.0) (2022-07-12)
 
 
