@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.1.0](https://github.com/mortzmortz/ferbes-layout/compare/v0.0.14...v0.1.0) (2022-07-12)
+
+
+### ⚠ BREAKING CHANGES
+
+* update to react 18
+
+### Features
+
+* update to react 18 ([e300bb3](https://github.com/mortzmortz/ferbes-layout/commit/e300bb3dafe091de6b5f036d7be2b6e2f3c1cc37))
+
 ### [0.0.14](https://github.com/mortzmortz/ferbes-layout/compare/v0.0.13...v0.0.14) (2022-03-05)
 
 
