@@ -13,6 +13,8 @@
 
 [Documentation](https://ferbes-layout.netlify.app)
 
+`Ferbes Layout` is based on [Stitches](https://stitches.dev).
+
 ## Setup
 
 ```bash
@@ -20,18 +22,6 @@ $ npm i ferbes-layout
 # or
 $ yarn add ferbes-layout
 ```
-
-## Documentation
-
-### Custom Theme
-
-> TODO:
-
-### Adding global styles
-
-> TODO:
-
-### Style with css prop
 
 ## License
 

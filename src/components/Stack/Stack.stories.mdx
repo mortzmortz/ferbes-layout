@@ -7,7 +7,7 @@ import { Stack, Placeholder } from '../';
 
 <Canvas withSource="open">
   <Story name="Base">
-    <Stack space="8">
+    <Stack space="4">
       <Placeholder height={40} />
       <Placeholder height={40} />
       <Placeholder height={40} />
@@ -21,9 +21,10 @@ import { Stack, Placeholder } from '../';
   <Story name="Space">
     <Stack
       space={{
-        '@initial': '8',
-        '@bp1': '4',
-        '@bp2': '2',
+        '@initial': '0',
+        '@bp1': '2',
+        '@bp2': '4',
+        '@bp3': '8',
       }}
     >
       <Placeholder height={40} />
@@ -51,19 +52,19 @@ import { Stack, Placeholder } from '../';
   <Story name="Horizontal Alignment">
     <Stack space="8" dividers="dodgerblue">
       <Stack space="2" align="left">
-        <Placeholder width={40} height={40} label="left" />
-        <Placeholder width={60} height={40} />
+        <Placeholder width={60} height={40} label="left" />
         <Placeholder width={80} height={40} />
+        <Placeholder width={100} height={40} />
       </Stack>
       <Stack space="2" align="center">
-        <Placeholder width={40} height={40} />
-        <Placeholder width={60} height={40} label="center" />
-        <Placeholder width={80} height={40} />
+        <Placeholder width={60} height={40} />
+        <Placeholder width={80} height={40} label="center" />
+        <Placeholder width={100} height={40} />
       </Stack>
       <Stack space="2" align="right">
-        <Placeholder width={40} height={40} />
         <Placeholder width={60} height={40} />
-        <Placeholder width={80} height={40} label="right" />
+        <Placeholder width={80} height={40} />
+        <Placeholder width={100} height={40} label="right" />
       </Stack>
     </Stack>
   </Story>
@@ -81,9 +82,9 @@ import { Stack, Placeholder } from '../';
         '@bp2': 'right',
       }}
     >
-      <Placeholder width={40} height={40} />
       <Placeholder width={60} height={40} />
       <Placeholder width={80} height={40} />
+      <Placeholder width={100} height={40} />
     </Stack>
   </Story>
 </Canvas>

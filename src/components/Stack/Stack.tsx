@@ -1,35 +1,18 @@
 import * as React from 'react';
 import flattenChildren from 'react-keyed-flatten-children';
 import type * as Stitches from '@stitches/react';
-import { CSS, styled } from '../../stitches.config';
+import { styled } from '../../stitches.config';
 import { Box } from '../Box/Box';
 import type { ResponsiveSpace } from '../../stitches.config';
-
-const childWithGap = '> * + *';
+import { Divider } from '../Divider/Divider';
 
 const StackElem = styled('div', {
   display: 'flex',
+  flexDirection: 'column',
   boxSizing: 'border-box',
   minWidth: 0,
 
-  $$gap: 'initial',
-  $$dividerColor: 'none',
-
   variants: {
-    direction: {
-      column: {
-        flexDirection: 'column',
-        [childWithGap]: { margin: '$$gap 0 0 0' },
-      },
-    },
-    dividers: {
-      true: {
-        [childWithGap]: {
-          borderTop: '1px solid $$dividerColor',
-          paddingTop: '$$gap',
-        },
-      },
-    },
     align: {
       center: {
         alignItems: 'center',
@@ -42,21 +25,30 @@ const StackElem = styled('div', {
       },
     },
   },
-  defaultVariants: {
-    direction: 'column',
-  },
 });
 
 function Stack({ space, align, dividers, children }: StitchesProps) {
-  const css: CSS = {};
-  css.stackGap = space ? (`$${space}` as any) : undefined; // TODO: fix types and responsive space
-  css.stackDividerColor = dividers;
-  const hasDividers = Boolean(dividers);
+  const stackItems = flattenChildren(children);
+  const stackCount = stackItems.length;
 
   return (
-    <StackElem css={css} align={align} dividers={hasDividers}>
-      {React.Children.map(flattenChildren(children), child =>
-        child !== null && child !== undefined ? <Box>{child}</Box> : null
+    <StackElem align={align}>
+      {stackItems.map((child, index) =>
+        child !== null && child !== undefined ? (
+          <Box key={index} paddingBottom={index !== stackCount - 1 ? space : 0}>
+            {dividers && index > 0 ? (
+              <Box
+                paddingBottom={space}
+                css={{
+                  width: '100%',
+                }}
+              >
+                <Divider color={dividers} />
+              </Box>
+            ) : null}
+            {child}
+          </Box>
+        ) : null
       )}
     </StackElem>
   );
@@ -66,7 +58,7 @@ type StitchesProps = {
   children?: React.ReactNode;
   space?: ResponsiveSpace;
   align?: Stitches.VariantProps<typeof StackElem>['align'];
-  dividers?: Stitches.PropertyValue<'borderColor'>;
+  dividers?: string;
 };
 
 Stack.displayName = 'Stack';

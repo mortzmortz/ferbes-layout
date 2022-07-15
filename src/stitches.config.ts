@@ -226,21 +226,6 @@ export const {
             whiteSpace: 'nowrap',
           }
         : '',
-
-    // Custom properties
-    stackGap: (value: Stitches.ScaleValue<'space'>) => ({
-      '> *': {
-        $$gap: `$space${value}`,
-      },
-    }),
-    stackDividerColor: (value: Stitches.PropertyValue<'borderColor'>) => ({
-      '> *': {
-        $$dividerColor: value,
-      },
-    }),
-    tilesColumns: (value: number) => ({
-      $$columns: value,
-    }),
   },
 });
 
