@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.2.0-next.1](https://github.com/mortzmortz/ferbes-layout/compare/v0.2.0-next.0...v0.2.0-next.1) (2022-07-15)
+
+
+### Bug Fixes
+
+* **Stack:** responsive space ([4c56258](https://github.com/mortzmortz/ferbes-layout/commit/4c5625822dbdb83c2c76ed1054c6923769b8eee0))
+
 ## [0.2.0-next.0](https://github.com/mortzmortz/ferbes-layout/compare/v0.1.0...v0.2.0-next.0) (2022-07-12)
 
 
