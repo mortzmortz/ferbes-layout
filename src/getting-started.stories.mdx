@@ -2,7 +2,7 @@ import { Meta, Canvas, Story } from '@storybook/addon-docs';
 import { Box, Flex, Stack, Placeholder } from './components';
 import pkgJson from '../package.json';
 
-<Meta title="Introduction/Getting Started" />
+<Meta title="Getting Started" />
 
 <Flex justify="center">
   <h1>Ferbes Layout</h1>
@@ -57,7 +57,97 @@ yarn add ferbes-layout
   </Story>
 </Canvas>
 
-### Adding global styles
+### Theme Tokens
+
+These are the default theme tokens.
+
+```js
+theme: {
+  space: {
+    0: '0',
+    1: '0.25rem',
+    2: '0.5rem',
+    3: '0.75rem',
+    4: '1rem',
+    5: '1.25rem',
+    6: '1.5rem',
+    7: '1.75rem',
+    8: '2rem',
+    9: '2.25rem',
+    10: '2.5rem',
+    11: '2.75rem',
+    12: '3rem',
+    14: '3.5rem',
+    16: '4rem',
+    18: '4.5rem',
+    20: '5rem',
+    24: '6rem',
+    32: '8rem',
+    40: '10rem',
+    48: '12rem',
+    56: '14rem',
+    64: '16rem',
+    '-1': '-0.25rem',
+    '-2': '-0.5rem',
+    '-3': '-0.75rem',
+    '-4': '-1rem',
+    '-5': '-1.25rem',
+    '-6': '-1.5rem',
+    '-7': '-1.75rem',
+    '-8': '-2rem',
+    '-9': '-2.25rem',
+    '-10': '-2.5rem',
+    '-11': '-2.75rem',
+    '-12': '-3rem',
+    '-14': '-3.5rem',
+    '-16': '-4rem',
+    '-18': '-4.5rem',
+    '-20': '-5rem',
+    '-24': '-6rem',
+    '-32': '-8rem',
+    '-40': '-10rem',
+    '-48': '-12rem',
+    '-56': '-14rem',
+    '-64': '-16rem',
+    full: '100%',
+  },
+  radii: {
+    1: '4px',
+    2: '6px',
+    3: '8px',
+    4: '12px',
+    round: '50%',
+    pill: '9999px',
+  }
+}
+```
+
+### Using Tokens
+
+You can use your tokens inside style props.
+
+```jsx
+() => <Box marginBottom="4">Content</Box>;
+```
+
+Tokens also work inside the css prop.<br />
+Use the `$` to reference a token.
+
+```jsx
+() => (
+  <Box
+    css={{
+      margin: '$4 $8',
+    }}
+  >
+    Content
+  </Box>
+);
+```
+
+### Styling
+
+#### Adding global styles
 
 ```jsx
 import { globalCss } from 'ferbes-layout';
@@ -73,10 +163,91 @@ const globalStyles = globalCss({
 };
 ```
 
-### TODO
+#### Basic styling with token aware values.
 
-- explain variants
-- explain css prop
-- explain custom theme with createTheme
+To apply a token you need to prefix it with a `$` sign.
+
+```jsx
+import { styled } from 'ferbes-layout';
+
+const Button = styled('button', {
+  backgroundColor: 'gainsboro',
+  borderRadius: '$pill',
+});
+
+() => <Button>Button</Button>;
+```
+
+#### Theme specific styles
+
+You can add styles based on themes by retrieving the dynamically generated theme class.
+
+```jsx
+import { createTheme } from 'ferbes-layout';
+
+const myTheme = createTheme({
+  colors: {
+    blue: '#0070f3',
+  },
+});
+
+const Button = styled('button', {
+  borderRadius: '$pill',
+
+  [`.${myTheme} &`]: {
+    backgroundColor: '$blue',
+  },
+});
+```
+
+> See more styling examples in the [Stitches Documentation](https://stitches.dev/docs/styling).
+
+### Custom Theming
+
+You can create additional themes that override your default tokens.
+
+```jsx
+import { createTheme } from 'ferbes-layout';
+
+export const dark = createTheme('dark-theme', {
+  colors: {
+    primary: '#0070f3',
+  },
+});
+
+() => (
+  <Box
+    className={dark}
+    css={{
+      color: '$primary',
+    }}
+  >
+    Content
+  </Box>
+);
+```
+
+### Available Tokens
+
+There are 14 token types available.
+
+```js
+theme: {
+  colors: {},
+  space: {},
+  fontSizes: {},
+  fonts: {},
+  fontWeights: {},
+  lineHeights: {},
+  letterSpacings: {},
+  sizes: {},
+  borderWidths: {},
+  borderStyles: {},
+  radii: {},
+  shadows: {},
+  zIndices: {},
+  transitions: {},
+},
+```
 
 </Box>
