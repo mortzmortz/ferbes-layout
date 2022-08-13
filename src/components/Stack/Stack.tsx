@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { ReactNode } from 'react';
 import flattenChildren from 'react-keyed-flatten-children';
 import type * as Stitches from '@stitches/react';
 import { styled } from '../../stitches.config';
@@ -55,7 +55,7 @@ function Stack({ space, align, dividers, children }: StitchesProps) {
 }
 
 type StitchesProps = {
-  children?: React.ReactNode;
+  children?: ReactNode;
   space?: ResponsiveSpace;
   align?: Stitches.VariantProps<typeof StackElem>['align'];
   dividers?: string;

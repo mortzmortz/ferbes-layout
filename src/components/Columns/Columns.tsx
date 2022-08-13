@@ -1,11 +1,12 @@
-import * as React from 'react';
+import React, { createContext, forwardRef } from 'react';
+import type { ReactElement } from 'react';
 import { sliceSpace, spaceToNegativeSpace } from '../../utils';
 import { config } from '../../stitches.config';
 import type { ResponsiveSpace } from '../../stitches.config';
 import { Box } from '../Box/Box';
 import { ColumnProps } from './Column';
 
-const ColumnContext = React.createContext({} as ColumnContextValue);
+const ColumnContext = createContext({} as ColumnContextValue);
 
 const mapToFlex = {
   left: 'flex-start',
@@ -15,7 +16,7 @@ const mapToFlex = {
   bottom: 'flex-end',
 } as const;
 
-const Columns = React.forwardRef<HTMLDivElement, ColumnsProps>(
+const Columns = forwardRef<HTMLDivElement, ColumnsProps>(
   ({ space, alignX, alignY, collapse, children }, ref) => {
     const justifyContent = alignX ? mapToFlex[alignX] : undefined;
     const alignItems = alignY ? mapToFlex[alignY] : undefined;
@@ -53,8 +54,8 @@ const Columns = React.forwardRef<HTMLDivElement, ColumnsProps>(
 
 export type ColumnsProps = {
   children?:
-    | Array<React.ReactElement<ColumnProps> | null>
-    | React.ReactElement<ColumnProps>
+    | Array<ReactElement<ColumnProps> | null>
+    | ReactElement<ColumnProps>
     | null;
   alignX?: 'left' | 'center' | 'right';
   alignY?: 'top' | 'center' | 'bottom';

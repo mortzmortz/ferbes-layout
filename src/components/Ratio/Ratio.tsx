@@ -1,3 +1,4 @@
+import React, { ReactNode } from 'react';
 import { Box } from '../Box/Box';
 
 function ratioStyles(ratio?: number) {
@@ -29,7 +30,7 @@ function Ratio({ ratio, children }: RatioProps) {
 }
 
 export type RatioProps = {
-  children?: React.ReactNode;
+  children?: ReactNode;
   ratio?: number;
 };
 

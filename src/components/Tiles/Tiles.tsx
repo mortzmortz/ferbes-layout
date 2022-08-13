@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { Children, forwardRef, ReactNode } from 'react';
 import flattenChildren from 'react-keyed-flatten-children';
 import type * as Stitches from '@stitches/react';
 import { ResponsiveSpace, styled } from '../../stitches.config';
@@ -39,7 +39,7 @@ const TileBox = styled(Box, {
   },
 });
 
-const Tiles = React.forwardRef<HTMLDivElement, TilesProps>(
+const Tiles = forwardRef<HTMLDivElement, TilesProps>(
   ({ space, columns = 1, children }, ref) => {
     const negativeSpace = spaceToNegativeSpace(space);
 
@@ -53,7 +53,7 @@ const Tiles = React.forwardRef<HTMLDivElement, TilesProps>(
           marginLeft={negativeSpace}
           ref={ref}
         >
-          {React.Children.map(flattenChildren(children), child =>
+          {Children.map(flattenChildren(children), child =>
             child !== null && child !== undefined ? (
               <TileBox columns={columns} paddingLeft={space} paddingTop={space}>
                 {child}
@@ -67,7 +67,7 @@ const Tiles = React.forwardRef<HTMLDivElement, TilesProps>(
 );
 
 export type TilesProps = {
-  children: React.ReactNode;
+  children: ReactNode;
   columns?: Stitches.VariantProps<typeof TileBox>['columns'];
   space?: ResponsiveSpace;
 };

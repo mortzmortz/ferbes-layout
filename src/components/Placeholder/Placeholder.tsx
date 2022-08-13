@@ -1,3 +1,4 @@
+import React from 'react';
 import type * as Stitches from '@stitches/react';
 import { config, styled } from '../../stitches.config';
 import { Box } from '../Box/Box';
@@ -46,7 +47,7 @@ const Placeholder = ({
     }}
   >
     {label ? (
-      <Box as="p">{label}</Box>
+      <p>{label}</p>
     ) : (
       <svg xmlns="http://www.w3.org/2000/svg">
         <line x1="0" y1="0" x2="100%" y2="100%" />

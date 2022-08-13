@@ -1,10 +1,10 @@
-import * as React from 'react';
+import React, { forwardRef, ReactNode, useContext } from 'react';
 import { ColumnContext } from './Columns';
 import { Box } from '../Box/Box';
 import { styled } from '../../stitches.config';
 
 export type ColumnProps = {
-  children?: React.ReactNode;
+  children?: ReactNode;
   width?: 'content' | number;
 };
 
@@ -14,9 +14,9 @@ const ColumnBox = styled(Box, {
   },
 });
 
-const Column = React.forwardRef<HTMLDivElement, ColumnProps>(
+const Column = forwardRef<HTMLDivElement, ColumnProps>(
   ({ width, children }, ref) => {
-    const { paddingLeft, paddingTop } = React.useContext(ColumnContext);
+    const { paddingLeft, paddingTop } = useContext(ColumnContext);
 
     return (
       <ColumnBox
