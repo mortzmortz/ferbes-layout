@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.2.0-next.2](https://github.com/mortzmortz/ferbes-layout/compare/v0.2.0-next.1...v0.2.0-next.2) (2022-08-13)
+
+
+### Bug Fixes
+
+* missing react ([c814861](https://github.com/mortzmortz/ferbes-layout/commit/c814861dd9542886aef73f4f39ed85f69959492f))
+
 ## [0.2.0-next.1](https://github.com/mortzmortz/ferbes-layout/compare/v0.2.0-next.0...v0.2.0-next.1) (2022-07-15)
 
 
