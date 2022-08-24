@@ -1,70 +1,29 @@
-import path from 'path';
-import babel from '@rollup/plugin-babel';
-import peerDepsExternal from 'rollup-plugin-peer-deps-external';
-import resolve from '@rollup/plugin-node-resolve';
 import typescript from 'rollup-plugin-typescript2';
-
-import packageJson from './package.json';
-const extensions = ['.ts', '.tsx', '.js', '.jsx', '.json'];
-
-function external(id) {
-  return !id.startsWith('.') && !path.isAbsolute(id);
-}
-
-function resolveDir(dir) {
-  if (!/\.(t|j)s$/.test(dir)) {
-    return dir;
-  }
-  return path.dirname(dir);
-}
+import pkg from './package.json';
 
 const lib = {
-  // Tell Rollup the entry point to the package
-  input: 'src/index.ts',
-  // Tell Rollup which packages to ignore
-  external: id => external(id),
-  // Establish Rollup output
+  input: 'lib/index.ts',
+  external: [
+    ...Object.keys(pkg.dependencies || {}),
+    ...Object.keys(pkg.peerDependencies || {}),
+  ],
   output: [
     {
-      dir: resolveDir(packageJson.module),
+      file: pkg.module,
       format: 'es',
-      sourcemap: true,
     },
     {
-      dir: resolveDir(packageJson.main),
+      file: pkg.main,
       format: 'cjs',
-      exports: 'named',
-      sourcemap: true,
     },
   ],
-  plugins: [
-    peerDepsExternal(),
-    babel({
-      extensions,
-      exclude: /node_modules/,
-      babelHelpers: 'bundled',
-    }),
-    resolve({
-      extensions,
-      preferBuiltins: false,
-    }),
-  ],
-};
-
-// Generate type declarations
-const types = {
-  input: 'src/index.ts',
   plugins: [
     typescript({
       typescript: require('typescript'),
-      useTsconfigDeclarationDir: true,
       clean: true,
-      tsconfigOverride: {
-        compilerOptions: { target: 'es5', emitDeclarationOnly: true },
-      },
+      tsconfig: 'tsconfig-rollup.json',
     }),
   ],
 };
 
-const module = [lib, types];
-export default module;
+export default lib;

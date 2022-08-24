@@ -68,6 +68,20 @@ export const Grid = styled('div', {
         gridTemplateColumns: 'repeat(4, 1fr)',
       },
     },
+    rows: {
+      1: {
+        gridTemplateRows: 'repeat(1, 1fr)',
+      },
+      2: {
+        gridTemplateRows: 'repeat(2, 1fr)',
+      },
+      3: {
+        gridTemplateRows: 'repeat(3, 1fr)',
+      },
+      4: {
+        gridTemplateRows: 'repeat(4, 1fr)',
+      },
+    },
     gap: tokenVariants({
       token: 'space',
       css: value => ({

@@ -1,8 +1,5 @@
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
-  options: {
-    viewMode: 'docs',
-  },
   storySort: {
     order: ['Introduction', 'Components'],
   },
