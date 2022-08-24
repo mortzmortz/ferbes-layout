@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.2.0-next.4](https://github.com/mortzmortz/ferbes-layout/compare/v0.2.0-next.3...v0.2.0-next.4) (2022-08-24)
+
+
+### ⚠ BREAKING CHANGES
+
+* simplify setup and extend theme
+
+### Features
+
+* simplify setup and extend theme ([65001c4](https://github.com/mortzmortz/ferbes-layout/commit/65001c4e9df45815950a0b6a38e2ba35e043c43c))
+
 ## [0.2.0-next.3](https://github.com/mortzmortz/ferbes-layout/compare/v0.2.0-next.2...v0.2.0-next.3) (2022-08-24)
 
 ## [0.2.0-next.2](https://github.com/mortzmortz/ferbes-layout/compare/v0.2.0-next.1...v0.2.0-next.2) (2022-08-13)
