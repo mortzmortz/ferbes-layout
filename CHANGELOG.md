@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.2.0-next.3](https://github.com/mortzmortz/ferbes-layout/compare/v0.2.0-next.2...v0.2.0-next.3) (2022-08-24)
+
 ## [0.2.0-next.2](https://github.com/mortzmortz/ferbes-layout/compare/v0.2.0-next.1...v0.2.0-next.2) (2022-08-13)
 
 
