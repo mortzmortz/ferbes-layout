@@ -9,15 +9,15 @@ const PlaceholderElem = styled('div', {
   justifyContent: 'center',
   alignItems: 'center',
   minWidth: 0,
-  background: '#E6E6DE',
-  border: '1px solid rgba(73, 96, 66, 0.8)',
+  backgroundColor: 'rgba(30, 144, 255, 1)',
+  border: '1px solid rgba(0, 50, 100, 0.5)',
   overflow: 'hidden',
   boxSizing: 'border-box',
   '& p': {
     margin: 0,
     padding: '4px 8px',
     textAlign: 'center',
-    color: 'rgba(73, 96, 66, 0.8)',
+    color: 'rgba(255, 255, 255, 0.9)',
     fontFamily: 'Courier, monospace',
     fontWeight: 500,
     fontSize: '14px',
@@ -31,7 +31,7 @@ const PlaceholderElem = styled('div', {
   },
   '& svg line': {
     strokeWidth: '1px',
-    stroke: 'rgba(73, 96, 66, 0.2)',
+    stroke: 'rgba(0, 50, 100, 0.2)',
   },
 });
 
@@ -47,7 +47,7 @@ const Placeholder = ({
     }}
   >
     {label ? (
-      <p>{label}</p>
+      <Box as="p">{label}</Box>
     ) : (
       <svg xmlns="http://www.w3.org/2000/svg">
         <line x1="0" y1="0" x2="100%" y2="100%" />
