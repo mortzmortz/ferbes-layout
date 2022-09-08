@@ -15,12 +15,15 @@ package-lock.json
 # Testing
 /coverage
 *.test.js
+*.test.ts
 
 # Configs and Logs
+vite.config.ts
 rollup.config.js
 babel.config.js
-setup.tests.js
 tsconfig.json
+tsconfig.node.json
+tsconfig-rollup.json
 .editorconfig
 .eslintcache
 .gitignore
