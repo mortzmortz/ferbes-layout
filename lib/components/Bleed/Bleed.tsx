@@ -1,9 +1,9 @@
-import * as React from 'react';
+import React, { forwardRef } from 'react';
 import { Box } from '../Box/Box';
 import { spaceToNegativeSpace } from '../../utils';
 import type { ResponsiveSpace } from '../../stitches.config';
 
-const Bleed = React.forwardRef<HTMLDivElement, BleedProps>(
+const Bleed = forwardRef<HTMLDivElement, BleedProps>(
   (
     {
       space,
@@ -15,8 +15,9 @@ const Bleed = React.forwardRef<HTMLDivElement, BleedProps>(
       right,
       as = 'div',
       children,
+      ...props
     },
-    ref
+    forwardedRef
   ) => {
     const mt = spaceToNegativeSpace(top || vertical || space);
     const mb = spaceToNegativeSpace(bottom || vertical || space);
@@ -25,7 +26,8 @@ const Bleed = React.forwardRef<HTMLDivElement, BleedProps>(
 
     return (
       <Box
-        ref={ref}
+        {...props}
+        ref={forwardedRef}
         as={as}
         display={as === 'span' ? 'block' : undefined}
         mt={mt}
@@ -46,7 +48,7 @@ const Bleed = React.forwardRef<HTMLDivElement, BleedProps>(
   }
 );
 
-export type BleedProps = {
+export type BleedProps = React.ComponentPropsWithRef<'div'> & {
   as?: 'div' | 'span';
   children?: React.ReactNode;
   space?: ResponsiveSpace;

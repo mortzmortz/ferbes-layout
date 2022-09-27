@@ -1,4 +1,4 @@
-import React, { createContext, forwardRef } from 'react';
+import React, { ComponentPropsWithRef, createContext, forwardRef } from 'react';
 import type { ReactElement } from 'react';
 import { sliceSpace, spaceToNegativeSpace } from '../../utils';
 import { config } from '../../stitches.config';
@@ -17,7 +17,7 @@ const mapToFlex = {
 } as const;
 
 const Columns = forwardRef<HTMLDivElement, ColumnsProps>(
-  ({ space, alignX, alignY, collapse, children }, ref) => {
+  ({ space, alignX, alignY, collapse, children, ...props }, forwardedRef) => {
     const justifyContent = alignX ? mapToFlex[alignX] : undefined;
     const alignItems = alignY ? mapToFlex[alignY] : undefined;
     const negativeSpace = spaceToNegativeSpace(space);
@@ -35,7 +35,8 @@ const Columns = forwardRef<HTMLDivElement, ColumnsProps>(
 
     return (
       <Box
-        ref={ref}
+        {...props}
+        ref={forwardedRef}
         marginLeft={negativeSpace}
         css={{
           display: 'flex',
@@ -52,7 +53,7 @@ const Columns = forwardRef<HTMLDivElement, ColumnsProps>(
   }
 );
 
-export type ColumnsProps = {
+export type ColumnsProps = ComponentPropsWithRef<'div'> & {
   children?:
     | Array<ReactElement<ColumnProps> | null>
     | ReactElement<ColumnProps>

@@ -1,12 +1,12 @@
-import React, { forwardRef, ReactNode, useContext } from 'react';
+import React, {
+  ComponentPropsWithRef,
+  forwardRef,
+  ReactNode,
+  useContext,
+} from 'react';
 import { ColumnContext } from './Columns';
 import { Box } from '../Box/Box';
 import { styled } from '../../stitches.config';
-
-export type ColumnProps = {
-  children?: ReactNode;
-  width?: 'content' | number;
-};
 
 const ColumnBox = styled(Box, {
   '&:first-of-type > *': {
@@ -15,12 +15,13 @@ const ColumnBox = styled(Box, {
 });
 
 const Column = forwardRef<HTMLDivElement, ColumnProps>(
-  ({ width, children }, ref) => {
+  ({ width, children, ...props }, forwardedRef) => {
     const { paddingLeft, paddingTop } = useContext(ColumnContext);
 
     return (
       <ColumnBox
-        ref={ref}
+        {...props}
+        ref={forwardedRef}
         css={{
           width: width !== 'content' ? '100%' : undefined,
           flexShrink: width === 'content' ? 0 : undefined,
@@ -45,6 +46,11 @@ const Column = forwardRef<HTMLDivElement, ColumnProps>(
     );
   }
 );
+
+export type ColumnProps = ComponentPropsWithRef<'div'> & {
+  children?: ReactNode;
+  width?: 'content' | number;
+};
 
 Column.displayName = 'Column';
 export { Column };

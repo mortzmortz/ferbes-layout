@@ -1,4 +1,9 @@
-import React, { Children, forwardRef, ReactNode } from 'react';
+import React, {
+  Children,
+  ComponentPropsWithRef,
+  forwardRef,
+  ReactNode,
+} from 'react';
 import type * as Stitches from '@stitches/react';
 import flattenChildren from 'react-keyed-flatten-children';
 import { config, ResponsiveSpace, styled } from '../../stitches.config';
@@ -35,7 +40,7 @@ export const Inliner = styled(Box, {
 });
 
 const Inline = forwardRef<HTMLDivElement, InlineProps>(
-  ({ space, alignX, alignY, collapse, children }, ref) => {
+  ({ space, alignX, alignY, collapse, children, ...props }, forwardedRef) => {
     const negativeSpace = spaceToNegativeSpace(space);
     const display: Stitches.VariantProps<typeof Box>['display'] = collapse
       ? {
@@ -61,11 +66,12 @@ const Inline = forwardRef<HTMLDivElement, InlineProps>(
     return (
       <Box marginTop={negativeSpace}>
         <Inliner
+          {...props}
           marginLeft={negativeSpace}
           alignX={alignX}
           alignY={alignY}
           css={inlinerStyles}
-          ref={ref}
+          ref={forwardedRef}
         >
           {Children.map(flattenChildren(children), child =>
             child !== null && child !== undefined ? (
@@ -114,7 +120,7 @@ export function variantToCss(
   return result;
 }
 
-export type InlineProps = {
+export type InlineProps = ComponentPropsWithRef<'div'> & {
   children?: ReactNode;
   space?: ResponsiveSpace;
   alignX?: Stitches.VariantProps<typeof Inliner>['alignX'];

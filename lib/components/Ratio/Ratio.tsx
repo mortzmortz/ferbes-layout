@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, ComponentPropsWithRef, forwardRef } from 'react';
 import { Box } from '../Box/Box';
 
 function ratioStyles(ratio?: number) {
@@ -23,13 +23,19 @@ function ratioStyles(ratio?: number) {
   };
 }
 
-function Ratio({ ratio, children }: RatioProps) {
-  const styles = ratioStyles(ratio);
+const Ratio = forwardRef<HTMLDivElement, RatioProps>(
+  ({ ratio, children, ...props }, forwardedRef) => {
+    const styles = ratioStyles(ratio);
 
-  return <Box css={styles}>{children}</Box>;
-}
+    return (
+      <Box {...props} css={styles} ref={forwardedRef}>
+        {children}
+      </Box>
+    );
+  }
+);
 
-export type RatioProps = {
+export type RatioProps = ComponentPropsWithRef<'div'> & {
   children?: ReactNode;
   ratio?: number;
 };

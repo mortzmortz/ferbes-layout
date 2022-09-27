@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { ComponentPropsWithRef, forwardRef, ReactNode } from 'react';
 import flattenChildren from 'react-keyed-flatten-children';
 import type * as Stitches from '@stitches/react';
 import { styled } from '../../stitches.config';
@@ -27,34 +27,39 @@ const StackElem = styled('div', {
   },
 });
 
-function Stack({ space, align, dividers, children }: StitchesProps) {
-  const stackItems = flattenChildren(children);
-  const stackCount = stackItems.length;
+const Stack = forwardRef<HTMLDivElement, StackProps>(
+  ({ space, align, dividers, children, ...props }, forwardedRef) => {
+    const stackItems = flattenChildren(children);
+    const stackCount = stackItems.length;
 
-  return (
-    <StackElem align={align}>
-      {stackItems.map((child, index) =>
-        child !== null && child !== undefined ? (
-          <Box key={index} paddingBottom={index !== stackCount - 1 ? space : 0}>
-            {dividers && index > 0 ? (
-              <Box
-                paddingBottom={space}
-                css={{
-                  width: '100%',
-                }}
-              >
-                <Divider color={dividers} />
-              </Box>
-            ) : null}
-            {child}
-          </Box>
-        ) : null
-      )}
-    </StackElem>
-  );
-}
+    return (
+      <StackElem {...props} ref={forwardedRef} align={align}>
+        {stackItems.map((child, index) =>
+          child !== null && child !== undefined ? (
+            <Box
+              key={index}
+              paddingBottom={index !== stackCount - 1 ? space : 0}
+            >
+              {dividers && index > 0 ? (
+                <Box
+                  paddingBottom={space}
+                  css={{
+                    width: '100%',
+                  }}
+                >
+                  <Divider color={dividers} />
+                </Box>
+              ) : null}
+              {child}
+            </Box>
+          ) : null
+        )}
+      </StackElem>
+    );
+  }
+);
 
-type StitchesProps = {
+export type StackProps = ComponentPropsWithRef<'div'> & {
   children?: ReactNode;
   space?: ResponsiveSpace;
   align?: Stitches.VariantProps<typeof StackElem>['align'];
