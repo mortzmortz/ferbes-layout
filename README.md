@@ -22,7 +22,3 @@ $ npm i ferbes-layout
 # or
 $ yarn add ferbes-layout
 ```
-
-## License
-
-MIT.
