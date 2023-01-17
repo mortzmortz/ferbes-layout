@@ -1,6 +1,7 @@
 import { createStitches } from '@stitches/react';
 import type * as Stitches from '@stitches/react';
 import { Box } from '.';
+
 export const {
   styled,
   css,
