@@ -61,7 +61,7 @@ export type ColumnsProps = ComponentPropsWithRef<'div'> & {
   alignX?: 'left' | 'center' | 'right';
   alignY?: 'top' | 'center' | 'bottom';
   space?: ResponsiveSpace;
-  collapse?: keyof typeof config['media'];
+  collapse?: keyof (typeof config)['media'];
 };
 
 interface ColumnContextValue {

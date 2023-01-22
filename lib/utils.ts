@@ -20,7 +20,7 @@ export function spaceToNegativeSpace(space: ResponsiveSpace) {
 
 export function sliceSpace(
   space?: ResponsiveSpace,
-  maxBreakpoint?: keyof typeof config['media']
+  maxBreakpoint?: keyof (typeof config)['media']
 ) {
   if (!space || !maxBreakpoint) return undefined;
   const result = {};

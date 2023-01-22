@@ -35,7 +35,7 @@
     "test": "vitest --passWithNoTests",
     "coverage": "vitest run --coverage",
     "analyze": "npx source-map-explorer 'dist/esm/*.js'",
-    "lint": "eslint src",
+    "lint": "eslint lib",
     "clean": "rm -rf dist",
     "clean-install": "rm -rf node_modules/ && yarn cache clean && yarn install --pure-lockfile"
   },

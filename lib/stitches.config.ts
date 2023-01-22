@@ -296,14 +296,14 @@ export const {
 export const tokenVariants = <T extends keyof typeof theme>(config: {
   token: T;
   css: (value: Stitches.ScaleValue<T, typeof stitchesConfig>) => CSS;
-}): Record<keyof typeof theme[T], CSS> =>
+}): Record<keyof (typeof theme)[T], CSS> =>
   Object.entries(theme[config.token]).reduce(
     (previousValue, [key, value]) => ({
       ...previousValue,
 
       [key]: config.css(value),
     }),
-    {} as Record<keyof typeof theme[T], CSS>
+    {} as Record<keyof (typeof theme)[T], CSS>
   );
 
 export type CSS = Stitches.CSS<typeof config>;
