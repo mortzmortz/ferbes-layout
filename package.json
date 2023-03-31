@@ -15,20 +15,23 @@
     "storybook"
   ],
   "license": "MIT",
-  "sideEffects": false,
-  "main": "dist/index.js",
-  "module": "dist/esm/index.js",
-  "typings": "dist/index.d.ts",
+  "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs"
+    }
+  },
   "engines": {
     "node": ">=14.17.0"
   },
   "scripts": {
     "dev": "cross-env NODE_ENV=development start-storybook -p 9000 --docs",
     "storybook:build": "build-storybook -o ./docs --docs",
-    "build": "tsup",
+    "build": "tsup --config ./tsup.config.ts",
     "release": "standard-version",
     "prepack": "yarn build && yarn test:ci",
     "test:ci": "vitest run --passWithNoTests",
