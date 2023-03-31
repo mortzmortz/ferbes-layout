@@ -19,11 +19,9 @@ package-lock.json
 
 # Configs and Logs
 vite.config.ts
-rollup.config.js
 babel.config.js
 tsconfig.json
 tsconfig.node.json
-tsconfig-rollup.json
 .editorconfig
 .eslintcache
 .gitignore

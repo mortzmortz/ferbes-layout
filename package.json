@@ -17,8 +17,8 @@
   "license": "MIT",
   "sideEffects": false,
   "main": "dist/index.js",
-  "module": "dist/index.es.js",
-  "typings": "dist/lib/index.d.ts",
+  "module": "dist/esm/index.js",
+  "typings": "dist/index.d.ts",
   "files": [
     "dist"
   ],
@@ -28,9 +28,9 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=development start-storybook -p 9000 --docs",
     "storybook:build": "build-storybook -o ./docs --docs",
-    "build": "cross-env NODE_ENV=production rollup -c --bundleConfigAsCjs",
+    "build": "tsup",
     "release": "standard-version",
-    "prepack": "yarn clean && yarn build && yarn test:ci",
+    "prepack": "yarn build && yarn test:ci",
     "test:ci": "vitest run --passWithNoTests",
     "test": "vitest --passWithNoTests",
     "coverage": "vitest run --coverage",
@@ -38,6 +38,18 @@
     "lint": "eslint lib",
     "clean": "rm -rf dist",
     "clean-install": "rm -rf node_modules/ && yarn cache clean && yarn install --pure-lockfile"
+  },
+  "tsup": {
+    "entry": [
+      "lib/index.ts"
+    ],
+    "format": [
+      "esm",
+      "cjs"
+    ],
+    "legacyOutput": true,
+    "dts": true,
+    "clean": true
   },
   "dependencies": {
     "@stitches/react": "^1.2.8",
@@ -73,11 +85,10 @@
     "eslint-config-react-app": "7.0.1",
     "eslint-plugin-prettier": "4.2.1",
     "prettier": "2.8.7",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
-    "rollup": "3.20.2",
-    "rollup-plugin-typescript2": "0.34.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "standard-version": "9.5.0",
+    "tsup": "^6.7.0",
     "typescript": "4.7.4",
     "vite": "^4.2.1",
     "vitest": "^0.29.8"
