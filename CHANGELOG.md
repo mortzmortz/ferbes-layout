@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.2](https://github.com/mortzmortz/ferbes-layout/compare/v1.2.1...v1.2.2) (2023-03-31)
+
+
+### Bug Fixes
+
+* esm package ([3e015be](https://github.com/mortzmortz/ferbes-layout/commit/3e015bea9be19aa188ad07f249f654cfe10401ec))
+
 ### [1.2.1](https://github.com/mortzmortz/ferbes-layout/compare/v1.2.0...v1.2.1) (2023-03-31)
 
 
