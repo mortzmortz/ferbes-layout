@@ -4,10 +4,9 @@ import React, {
   forwardRef,
   ReactNode,
 } from 'react';
-import flattenChildren from 'react-keyed-flatten-children';
 import type * as Stitches from '@stitches/react';
 import { ResponsiveSpace, styled } from '../../stitches.config';
-import { spaceToNegativeSpace } from '../../utils';
+import { spaceToNegativeSpace, flattenChildren } from '../../utils';
 import { Box } from '../Box/Box';
 
 const TileBox = styled(Box, {

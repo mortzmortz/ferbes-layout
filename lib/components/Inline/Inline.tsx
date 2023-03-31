@@ -5,9 +5,8 @@ import React, {
   ReactNode,
 } from 'react';
 import type * as Stitches from '@stitches/react';
-import flattenChildren from 'react-keyed-flatten-children';
 import { config, ResponsiveSpace, styled } from '../../stitches.config';
-import { spaceToNegativeSpace } from '../../utils';
+import { spaceToNegativeSpace, flattenChildren } from '../../utils';
 import { Box } from '../Box/Box';
 
 export const Inliner = styled(Box, {

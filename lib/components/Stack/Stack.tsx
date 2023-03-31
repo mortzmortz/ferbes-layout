@@ -1,10 +1,10 @@
 import React, { ComponentPropsWithRef, forwardRef, ReactNode } from 'react';
-import flattenChildren from 'react-keyed-flatten-children';
 import type * as Stitches from '@stitches/react';
 import { styled } from '../../stitches.config';
 import { Box } from '../Box/Box';
 import type { ResponsiveSpace } from '../../stitches.config';
 import { Divider } from '../Divider/Divider';
+import { flattenChildren } from '../../utils';
 
 const StackElem = styled('div', {
   display: 'flex',
