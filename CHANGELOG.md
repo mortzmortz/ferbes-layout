@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.1](https://github.com/mortzmortz/ferbes-layout/compare/v1.2.0...v1.2.1) (2023-03-31)
+
+
+### Bug Fixes
+
+* tsup setup ([ab6cd87](https://github.com/mortzmortz/ferbes-layout/commit/ab6cd87ab7ee1cafa4a0a57360f55d452e25722a))
+
 ## [1.2.0](https://github.com/mortzmortz/ferbes-layout/compare/v1.1.6...v1.2.0) (2023-03-31)
 
 
